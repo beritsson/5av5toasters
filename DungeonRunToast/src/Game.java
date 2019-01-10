@@ -9,6 +9,7 @@ import java.util.Scanner;
 
 public class Game {
 	
+
 	static Scanner input = new Scanner(System.in);
 	
 	public static void main(String[] args) { 
@@ -198,6 +199,9 @@ public static void newgamemenu() {
 			System.out.println("You have choosen EASY");
 
 			//Start game EASY MAP
+		
+			
+			
 			
 		} else if (diffuculity.equalsIgnoreCase("M")) { // MEDIUM
 			System.out.println("You have choosen MEDIUM");
@@ -226,6 +230,9 @@ public static void newgamemenu() {
 		}
 		return map;
 	}
+
+	
+
 		
 
 }
