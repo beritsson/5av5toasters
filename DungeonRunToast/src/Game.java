@@ -16,7 +16,8 @@ public class Game {
 		while (true) {
 			menulogo();
 			System.out.println(
-							  "     											                \n"			
+							  "     											                \n"	
+					        + "     											                \n"	
 							+ "					 		  	╔══════════════════════════════════╗\n"
 							+ "							  	║              GAME MENU           ║\n"
 							+ "							  	╚══════════════════════════════════╝\n"
@@ -29,7 +30,6 @@ public class Game {
 							+ "							  	║              [E]xit              ║\n"
 							+ "							  	║                                  ║\n"
 							+ "							  	╚══════════════════════════════════╝\n"
-							+"TEST"
 
 					);
 			Scanner scanner = new Scanner(System.in);
@@ -210,8 +210,9 @@ public static void newgamemenu() {
 		}
 		
 		
+		
 	}
-
+	
 	static Room[][] Maps(int x){
 		Room map[][] = new Room[x][x];
 		for (int i = 0; i < x; i++) {
