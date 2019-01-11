@@ -39,6 +39,18 @@ public class Room {
 		return monsterList;
 	}
 	
+	public boolean monsterinroom() {
+		if(monsterList.size()>0) {
+			for (Monster monster : monsterList) {
+				monster.attributes();
+				return true;
+			}
+		}
+		
+		else {
+		System.out.println("No monsters in this room");}
+		return false;}
+	
 	
 	ArrayList<Tresure> tresure () {
 
