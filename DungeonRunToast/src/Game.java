@@ -218,8 +218,8 @@ public static void newgamemenu() {
 			for (int j = 0; j < x; j++) {
 				map[i][j] = new Room(); 
 				map[i][j].setPosition(i, j);
-				map[i][j].showPosition();
 				map[i][j].monster();
+				map[i][j].showPosition();
 				map[i][j].tresure();
 				map[i][j].monsterinroom();
 				map[i][j].tresureinroom();
