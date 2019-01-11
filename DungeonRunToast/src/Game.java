@@ -197,20 +197,19 @@ public static void newgamemenu() {
 		
 		if (diffuculity.equalsIgnoreCase("E")) { // EASY
 			System.out.println("You have choosen EASY");
-
-			//Start game EASY MAP
 		
-			
-			
+			Maps(4);
 			
 		} else if (diffuculity.equalsIgnoreCase("M")) { // MEDIUM
 			System.out.println("You have choosen MEDIUM");
 
-			//Start game MEDIUM MAP
+			Maps(5);
 			
 		} else if (diffuculity.equalsIgnoreCase("H")) { // HARD
 			System.out.println("You have choosen HARD");
-			//Start game HARD MAP
+
+			Maps(8);
+			
 		}
 		
 		
