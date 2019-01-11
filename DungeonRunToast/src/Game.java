@@ -164,14 +164,20 @@ public static void newgamemenu() {
 	
 	if (character.equalsIgnoreCase("K")) { // KNIGHT
 		System.out.println("You have choosen the Knight");
+		Knight knight = new Knight(pname);
+		knight.characterAttribute();
 
 		
 	} else if (character.equalsIgnoreCase("W")) { // WIZARD
 		System.out.println("You have choosen the Wizard");
+		Wizard wizard = new Wizard(pname);
+		wizard.characterAttribute();
 
 		
 	} else if (character.equalsIgnoreCase("T")) { // THIEF
 		System.out.println("You have choosen the Thife");
+		Thief thief = new Thief(pname);
+		thief.characterAttribute();
 	}
 	mapmenu();
 }
