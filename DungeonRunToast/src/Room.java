@@ -11,7 +11,10 @@ public class Room {
 		this.x = x;
 		this.y = y;
 	}
-
+	void choosemap() {
+		
+	}
+	
 
 	public int getX() {
 		return x;
@@ -79,6 +82,8 @@ public boolean tresureinroom() {
 
 	 void showPosition() {
 		 System.out.println("\nRoom [x=" + x + ", y=" + y + "]");
+		 //monsterinroom();
+		 
 	}
 	
 	

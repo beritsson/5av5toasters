@@ -2,7 +2,6 @@ import java.util.Scanner;
 
 public class Walk {
 	Scanner scanner = new Scanner(System.in);
-	Room room = new Room();
 	
 	
 public Walk() {
@@ -15,6 +14,9 @@ public void easymenu() {
 	Maps(4);
 	
 	
+	
+	
+	
 	boolean menuing = true;
 	while(menuing) {;
 		System.out.println("Which corner would you like to start in?");
@@ -24,7 +26,10 @@ public void easymenu() {
 		
 		switch (menuchoice) {
 		case "l":
+			
+		
 		System.out.println("Start position left upper corner");
+		
 		
 		
 			menuing = true;
@@ -47,7 +52,7 @@ public void easymenu() {
 }
 
 
-static Room[][] Maps(int x){
+public Room[][] Maps(int x){
 	Room map[][]   = new Room[x][x];
 	for (int i = 0; i < x; i++) {
 		for (int j = 0; j < x; j++) {
@@ -61,4 +66,6 @@ static Room[][] Maps(int x){
 	}
 	return map;
 }
+
+
 }
