@@ -41,19 +41,11 @@ public class Tresure {
 
 	
 
-public int getValue() {
+//	public int getValue() {
 
-return value;
+//		return value;
 
-}
-
-//
-
-//
-
-//
-
-
+//	}
 
 //
 
@@ -61,11 +53,23 @@ return value;
 
 //
 
-public int getCommonness() {
+//	public void setValue(int value) {
 
-	return commonness;
+//		this.value = value;
 
-}
+//	}
+
+//
+
+//
+
+//
+
+//	public int getCommonness() {
+
+//		return commonness;
+
+//	}
 
 //
 
@@ -73,13 +77,35 @@ public int getCommonness() {
 
 //
 
+//	public void setCommonness(int commonness) {
+
+//		this.commonness = commonness;
+
+//	}
 
 
-public String getType() {
 
-return type;
 
-}
+
+
+
+//	public String getType() {
+
+//		return type;
+
+//	}
+
+//
+
+//
+
+//
+
+//	public void setType(String type) {
+
+//		this.type = type;
+
+//	}
 
 
 
@@ -87,19 +113,19 @@ return type;
 
 	
 
-public void showAttributes(ArrayList<Tresure> tresureList0)
+//	public void showAttributes(ArrayList<Tresure> tresureList0)
 
-{
+//	{
 
-for (Tresure tresure : tresureList0) {
+//		for (Tresure tresure : tresureList0) {
 
+//
 
+//			tresure.attributes();
 
-tresure.attributes();
+//		}
 
-}
-
-}
+//	}
 
 //	
 
