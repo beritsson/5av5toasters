@@ -31,39 +31,37 @@ public class Character {
 	public String getUserName() {
 		return userName;
 	}
-	public void setUserName(String userName) {
+	protected void setUserName(String userName) {
 		this.userName = userName;
 	}
 	public String getCharacterName() {
 		return characterName;
 	}
-	public void setCharacterName(String characterName) {
+	protected void setCharacterName(String characterName) {
 		this.characterName = characterName;
 	}
 	public int getInitiativ() {
 		return initiativ;
 	}
-	public void setInitiativ(int initiativ) {
+	protected void setInitiativ(int initiativ) {
 		this.initiativ = initiativ;
 	}
 	public int getResistance() {
 		return resistance;
 	}
-	public void setResistance(int resistance) {
+	protected void setResistance(int resistance) {
 		this.resistance = resistance;
 	}
 	public int getAttack() {
 		return attack;
 	}
-	public void setAttack(int attack) {
+	protected void setAttack(int attack) {
 		this.attack = attack;
 	}
 	public int getFlexibility() {
 		return flexibility;
 	}
-	public void setFlexibility(int flexibility) {
+	protected void setFlexibility(int flexibility) {
 		this.flexibility = flexibility;
 	}
-
-
 }
