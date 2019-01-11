@@ -33,7 +33,7 @@ public class Game {
 							+ "							  	╚══════════════════════════════════╝\n"
 
 					);
-//			Scanner scanner = new Scanner(System.in);
+
 			String choice =input.next();
 
 			if (choice.equalsIgnoreCase("N")) { // START GAME
@@ -47,24 +47,17 @@ public class Game {
 				System.out.println("Have a nice day!");
 				try {
 					Thread.sleep(50);
-				} catch (InterruptedException e) {
-					System.out.printf("Somthing went wrong:(", e);
-					e.printStackTrace();
-				}
+				} catch (InterruptedException e) {}
 				System.out.println("\tBye....");
+				//say "Bye..." again ?
 				try {
 					Thread.sleep(50);
-				} catch (InterruptedException e) {
-					System.out.printf("Somthing went wrong:(", e);
-					e.printStackTrace();
-				}
+				} catch (InterruptedException e) {}
 				System.out.println("\t\tBye....");
 				System.exit(0);
-			} else if (choice.equalsIgnoreCase("A")) {
-			} else if (!choice.equalsIgnoreCase("A") && !choice.equalsIgnoreCase("S")
-					&& !choice.equalsIgnoreCase("C")) {
-				System.out.println("Invalid choice, returning to Menu...\n");
-				
+//			} else if (choice.equalsIgnoreCase("A")) {
+			} else {
+				System.out.println("Invalid choice, returning to Menu...\n");				
 			}
 
 
@@ -74,7 +67,7 @@ public class Game {
 	}
 	
 	public static void loadmenu() {
-		
+		while (true)  {
 		System.out.println(
 				  "     											     \n"			
 				+ "					 		  	╔══════════════════════════════════╗\n"
@@ -85,15 +78,15 @@ public class Game {
 		
 		String pname = input.next();
 		 
-		if (pname.equalsIgnoreCase("PLAYERS USERNAME FOUND")) { //----------------------------------------------------INSERT CHECK IF PLAYER NAME EXIST 
+		if (pname.equalsIgnoreCase("PLAYERS")) { //----------------------------------------------------INSERT CHECK IF PLAYER NAME EXIST 
 			System.out.println("You're load has been found");
 			//Start game EASY MAP
+			break;
 			
 		} else  { // MEDIUM
 			System.out.println("Error not found");
-			return;
-
-	}
+				}
+		}
 	}
 
 public static void menulogo() {
@@ -127,7 +120,7 @@ public static void menulogo() {
 }
 
 public static void newgamemenu() {
-	
+
 	System.out.println(
 			  "     											     \n"			
 			+ "					 		  	╔══════════════════════════════════╗\n"
@@ -137,41 +130,50 @@ public static void newgamemenu() {
 	);
 	String pname =input.next();
 	
+	while (true)  {
+		System.out.println(
+				  "                                                                                                                   \n"			
+	+ "                                                                ╔════════════════════════════════════╗                                      \n"
+	+ "                                                                ║         CHOOSE A CHARACTER         ║                                      \n"
+	+ "                                                                ╚════════════════════════════════════╝                                      \n"
+	+ "                          ╔════════════════════════════════════╗╔════════════════════════════════════╗╔════════════════════════════════════╗\n"
+	+ "                          ║             [K]night               ║║              [W]izard              ║║               [T]hife              ║\n"
+	+ "                          ║                                    ║║                                    ║║                                    ║\n"
+	+ "                          ║   Special abillites: Shieldblock   ║║   Special abillites: Light Rail    ║║   Special abillites: Critical Hit  ║\n"
+	+ "                          ║                                    ║║                                    ║║                                    ║\n"
+	+ "                          ║           Initiative: 5            ║║           Initiative: 6            ║║           Initiative: 7            ║\n"
+	+ "                          ║           Health: 9                ║║           Health: 4                ║║           Health: 5                ║\n"
+	+ "                          ║           Attack: 6                ║║           Attack: 9                ║║           Attack: 5                ║\n"
+	+ "                          ║           Flexibility: 4           ║║           Flexibility: 5           ║║           Flexibility: 7           ║\n"
+	+ "                          ║                                    ║║                                    ║║                                    ║\n"
+	+ "                          ║                                    ║║                                    ║║                                    ║\n"
+	+ "                          ╚════════════════════════════════════╝╚════════════════════════════════════╝╚════════════════════════════════════╝\n"
 	
-	System.out.println(
-			  "                                                                                                                   \n"			
-+ "                                                                ╔════════════════════════════════════╗                                      \n"
-+ "                                                                ║         CHOOSE A CHARACTER         ║                                      \n"
-+ "                                                                ╚════════════════════════════════════╝                                      \n"
-+ "                          ╔════════════════════════════════════╗╔════════════════════════════════════╗╔════════════════════════════════════╗\n"
-+ "                          ║             [K]night               ║║              [W]izard              ║║               [T]hife              ║\n"
-+ "                          ║                                    ║║                                    ║║                                    ║\n"
-+ "                          ║   Special abillites: Shieldblock   ║║   Special abillites: Light Rail    ║║   Special abillites: Critical Hit  ║\n"
-+ "                          ║                                    ║║                                    ║║                                    ║\n"
-+ "                          ║           Initiative: 5            ║║           Initiative: 6            ║║           Initiative: 7            ║\n"
-+ "                          ║           Health: 9                ║║           Health: 4                ║║           Health: 5                ║\n"
-+ "                          ║           Attack: 6                ║║           Attack: 9                ║║           Attack: 5                ║\n"
-+ "                          ║           Flexibility: 4           ║║           Flexibility: 5           ║║           Flexibility: 7           ║\n"
-+ "                          ║                                    ║║                                    ║║                                    ║\n"
-+ "                          ║                                    ║║                                    ║║                                    ║\n"
-+ "                          ╚════════════════════════════════════╝╚════════════════════════════════════╝╚════════════════════════════════════╝\n"
-
-	);
-	String character =input.next();
+		);
+		String character =input.next();
+		
+		if (character.equalsIgnoreCase("K")) { // KNIGHT
+			Knight knight = new Knight(pname);
+			knight.characterAttribute();
+			break;
 	
-	if (character.equalsIgnoreCase("K")) { // KNIGHT
-		Knight knight = new Knight(pname);
-		knight.characterAttribute();
-
+			
+		} else if (character.equalsIgnoreCase("W")) { // WIZARD
+			Wizard wizard = new Wizard(pname);
+			wizard.characterAttribute();
+			break;
+	
+			
+		} else if (character.equalsIgnoreCase("T")) { // THIEF
+			Thief thief = new Thief(pname);
+			thief.characterAttribute();
+			break;
+			
+			
+		} else {
+			System.out.println("Invalid choice, try again...\n");	
+		}
 		
-	} else if (character.equalsIgnoreCase("W")) { // WIZARD
-		Wizard wizard = new Wizard(pname);
-		wizard.characterAttribute();
-
-		
-	} else if (character.equalsIgnoreCase("T")) { // THIEF
-		Thief thief = new Thief(pname);
-		thief.characterAttribute();
 	}
 	mapmenu();
 }
@@ -179,38 +181,46 @@ public static void newgamemenu() {
 
 	
 	static void mapmenu(){
-		
-		System.out.println(
-				  "     											     \n"			
-							+ "					 		  	╔═════════════════════════════════════╗\n"
-							+ "							  	║       Choose youre diffuculity      ║\n"
-							+ "							  	╚═════════════════════════════════════╝\n"
-							+ "					 		  	╔═══════════╗╔═══════════╗╔═══════════╗\n"
-							+ "							  	║   [E]asy  ║║ [M]edium  ║║  [H]ard   ║\n"
-							+ "							  	║  Map 4x4  ║║  Map 5x5  ║║  Map 8x8  ║\n"
-							+ "							  	╚═══════════╝╚═══════════╝╚═══════════╝\n"
-
-		);
-		
-		String diffuculity =input.next();
-		
-		if (diffuculity.equalsIgnoreCase("E")) { // EASY
-			System.out.println("You have choosen EASY");
-			Maps(4);
+		while (true)  {
+			System.out.println(
+					  "     											     \n"			
+								+ "					 		  	╔═════════════════════════════════════╗\n"
+								+ "							  	║       Choose youre diffuculity      ║\n"
+								+ "							  	╚═════════════════════════════════════╝\n"
+								+ "					 		  	╔═══════════╗╔═══════════╗╔═══════════╗\n"
+								+ "							  	║   [E]asy  ║║ [M]edium  ║║  [H]ard   ║\n"
+								+ "							  	║  Map 4x4  ║║  Map 5x5  ║║  Map 8x8  ║\n"
+								+ "							  	╚═══════════╝╚═══════════╝╚═══════════╝\n"
+	
+			);
 			
-		} else if (diffuculity.equalsIgnoreCase("M")) { // MEDIUM
-			System.out.println("You have choosen MEDIUM");
-			Maps(5);
+			String diffuculity =input.next();
 			
-		} else if (diffuculity.equalsIgnoreCase("H")) { // HARD
-			System.out.println("You have choosen HARD");
-			Maps(8);
-			
+			if (diffuculity.equalsIgnoreCase("E")) { // EASY
+				System.out.println("You have choosen EASY");
+				Maps(4);
+				break;
+				
+			} else if (diffuculity.equalsIgnoreCase("M")) { // MEDIUM
+				System.out.println("You have choosen MEDIUM");
+				Maps(5);
+				break;
+				
+			} else if (diffuculity.equalsIgnoreCase("H")) { // HARD
+				System.out.println("You have choosen HARD");
+				Maps(8);
+				break;
+				
+			} else {
+				System.out.println("Invalid choice, try again...\n");	
+			}
+		
 		}
 		
 		
-		
 	}
+
+	
 	
 	static Room[][] Maps(int x){
 		Room map[][] = new Room[x][x];
