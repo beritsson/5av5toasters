@@ -31,11 +31,6 @@ public class Room {
 		s.addMonster(monsterList);
 		o.addMonster(monsterList);
 		t.addMonster(monsterList);
-		
-		for (Monster monster : monsterList) {
-			monster.attributes();
-		}
-
 		return monsterList;
 	}
 	
@@ -51,37 +46,39 @@ public class Room {
 		p.addTresure(tresureList);
 		gj.addTresure(tresureList);
 		g.addTresure(tresureList);
-		tc.addTresure(tresureList);
-		
-		for (Tresure tresure : tresureList) {
-			tresure.attributes();
-		}
-		
+		tc.addTresure(tresureList);	
 		return tresureList;
 	}
 	
 
 public boolean monsterinroom() {
 		if(monsterList.size()>0) {
+			System.out.println("\nMonster:");
 			for (Monster monster : monsterList) {
 				monster.attributes();
 				return true;
 			}
-		}
-		
+		}		
 		else {
-		System.out.println("No monsters in this room");}
+		System.out.println("\nNo monsters in this room");}
 		return false;}
 
 
+public boolean tresureinroom() {
+	if(tresureList.size()>0) {
+		System.out.println("\nTresure:");
+		for (Tresure tresure : tresureList) {
+			tresure.attributes();
+			return true;
+		}
+	}	
+	else {
+	System.out.println("\nNo tresure in this room");}
+	return false;}
+
+
 	 void showPosition() {
-		 System.out.println("Room [x=" + x + ", y=" + y + "]");
-//		 if (monsterList.size() == 0) {
-//			 System.out.println("No monster in this room!");
-//		 }
-//		 if (tresureList.size() == 0) {
-//			 System.out.println("No tresure in this room!");
-//		 }
+		 System.out.println("\nRoom [x=" + x + ", y=" + y + "]");
 	}
 	
 	
