@@ -226,6 +226,7 @@ public static void newgamemenu() {
 				map[i][j].showPosition();
 				map[i][j].monster();
 				map[i][j].tresure();
+				map[i][j].monsterinroom();
 			}
 		}
 		return map;
