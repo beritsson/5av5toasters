@@ -9,17 +9,6 @@ public class Knight extends Character{
 		resistance = 9;
 		attack = 6;
 		flexibility = 4;
+		specialAbiltie = "Shield block! First hit on the knight will always be blocked!";
 	}
-	
-	void characterAttribute() 
-	{
-		System.out.println("\n\t\tHERO");
-		System.out.println("\tKnight " + "[" + userName + "]" + " attributes");
-		System.out.println("\tInitiativ: " + initiativ);
-		System.out.println("\tResistance: " + resistance);
-		System.out.println("\tAttack: " + attack);
-		System.out.println("\tflexibility: " + flexibility);
-		System.out.println("(Special abiltie: Shield Block, no damage the first hit)");
-	}
-
 }
