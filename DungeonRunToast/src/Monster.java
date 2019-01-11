@@ -10,7 +10,7 @@ public class Monster {
 
 	void attributes() 
 	{
-		System.out.println(name + " attributes");
+		System.out.println("---------" + name + " attributes---------");
 		System.out.println("\tInitiativ: " + initiativ);
 		System.out.println("\tResistance: " + resistance);
 		System.out.println("\tAttack: " + attack);

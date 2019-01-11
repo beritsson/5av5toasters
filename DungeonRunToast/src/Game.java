@@ -83,7 +83,6 @@ public class Game {
 
 		);
 		
-//		Scanner inputPName = new Scanner(System.in);
 		String pname = input.next();
 		 
 		if (pname.equalsIgnoreCase("PLAYERS USERNAME FOUND")) { //----------------------------------------------------INSERT CHECK IF PLAYER NAME EXIST 
@@ -136,7 +135,6 @@ public static void newgamemenu() {
 			+ "							  	╚══════════════════════════════════╝\n"
 
 	);
-//	Scanner inputPName = new Scanner(System.in);
 	String pname =input.next();
 	
 	
@@ -159,23 +157,19 @@ public static void newgamemenu() {
 + "                          ╚════════════════════════════════════╝╚════════════════════════════════════╝╚════════════════════════════════════╝\n"
 
 	);
-//	Scanner inputcharacter = new Scanner(System.in);
 	String character =input.next();
 	
 	if (character.equalsIgnoreCase("K")) { // KNIGHT
-		System.out.println("You have choosen the Knight");
 		Knight knight = new Knight(pname);
 		knight.characterAttribute();
 
 		
 	} else if (character.equalsIgnoreCase("W")) { // WIZARD
-		System.out.println("You have choosen the Wizard");
 		Wizard wizard = new Wizard(pname);
 		wizard.characterAttribute();
 
 		
 	} else if (character.equalsIgnoreCase("T")) { // THIEF
-		System.out.println("You have choosen the Thife");
 		Thief thief = new Thief(pname);
 		thief.characterAttribute();
 	}
@@ -189,7 +183,7 @@ public static void newgamemenu() {
 		System.out.println(
 				  "     											     \n"			
 							+ "					 		  	╔═════════════════════════════════════╗\n"
-							+ "							  	║       Choose you're diffuculity     ║\n"
+							+ "							  	║       Choose youre diffuculity      ║\n"
 							+ "							  	╚═════════════════════════════════════╝\n"
 							+ "					 		  	╔═══════════╗╔═══════════╗╔═══════════╗\n"
 							+ "							  	║   [E]asy  ║║ [M]edium  ║║  [H]ard   ║\n"
@@ -198,22 +192,18 @@ public static void newgamemenu() {
 
 		);
 		
-//		Scanner inputdiff = new Scanner(System.in);
 		String diffuculity =input.next();
 		
 		if (diffuculity.equalsIgnoreCase("E")) { // EASY
 			System.out.println("You have choosen EASY");
-		
 			Maps(4);
 			
 		} else if (diffuculity.equalsIgnoreCase("M")) { // MEDIUM
 			System.out.println("You have choosen MEDIUM");
-
 			Maps(5);
 			
 		} else if (diffuculity.equalsIgnoreCase("H")) { // HARD
 			System.out.println("You have choosen HARD");
-
 			Maps(8);
 			
 		}
