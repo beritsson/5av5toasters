@@ -9,18 +9,6 @@ public class Wizard extends Character{
 		resistance = 4;
 		attack = 9;
 		flexibility = 5;
+		specialAbiltie = "Blind the enemy! 80% chance to flee the battle!";
 	}
-	
-	void characterAttribute() 
-	{
-		System.out.println("\n\t\tHERO");
-		System.out.println("\tWizard " + "[" + userName + "]" + " attributes");
-		System.out.println("\tInitiativ: " + initiativ);
-		System.out.println("\tResistance: " + resistance);
-		System.out.println("\tAttack: " + attack);
-		System.out.println("\tflexibility: " + flexibility);
-		System.out.println("(Special abilitie: Blinde the enemy for a better chance to flee the battle)");
-	}
-
-
 }

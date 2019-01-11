@@ -3,7 +3,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
+//import java.io.IOException;
 import java.util.Scanner;
 
 
@@ -33,8 +33,8 @@ public class Game {
 							+ "							  	╚══════════════════════════════════╝\n"
 
 					);
-			Scanner scanner = new Scanner(System.in);
-			String choice =scanner.next();
+//			Scanner scanner = new Scanner(System.in);
+			String choice =input.next();
 
 			if (choice.equalsIgnoreCase("N")) { // START GAME
 				System.out.println("NEW GAME");
@@ -83,8 +83,7 @@ public class Game {
 
 		);
 		
-		Scanner inputPName = new Scanner(System.in);
-		String pname =inputPName.next();
+		String pname = input.next();
 		 
 		if (pname.equalsIgnoreCase("PLAYERS USERNAME FOUND")) { //----------------------------------------------------INSERT CHECK IF PLAYER NAME EXIST 
 			System.out.println("You're load has been found");
@@ -136,8 +135,7 @@ public static void newgamemenu() {
 			+ "							  	╚══════════════════════════════════╝\n"
 
 	);
-	Scanner inputPName = new Scanner(System.in);
-	String pname =inputPName.next();
+	String pname =input.next();
 	
 	
 	System.out.println(
@@ -159,19 +157,21 @@ public static void newgamemenu() {
 + "                          ╚════════════════════════════════════╝╚════════════════════════════════════╝╚════════════════════════════════════╝\n"
 
 	);
-	Scanner inputcharacter = new Scanner(System.in);
-	String character =inputcharacter.next();
+	String character =input.next();
 	
 	if (character.equalsIgnoreCase("K")) { // KNIGHT
-		System.out.println("You have choosen the Knight");
+		Knight knight = new Knight(pname);
+		knight.characterAttribute();
 
 		
 	} else if (character.equalsIgnoreCase("W")) { // WIZARD
-		System.out.println("You have choosen the Wizard");
+		Wizard wizard = new Wizard(pname);
+		wizard.characterAttribute();
 
 		
 	} else if (character.equalsIgnoreCase("T")) { // THIEF
-		System.out.println("You have choosen the Thife");
+		Thief thief = new Thief(pname);
+		thief.characterAttribute();
 	}
 	mapmenu();
 }
@@ -183,7 +183,7 @@ public static void newgamemenu() {
 		System.out.println(
 				  "     											     \n"			
 							+ "					 		  	╔═════════════════════════════════════╗\n"
-							+ "							  	║       Choose you're diffuculity     ║\n"
+							+ "							  	║       Choose youre diffuculity      ║\n"
 							+ "							  	╚═════════════════════════════════════╝\n"
 							+ "					 		  	╔═══════════╗╔═══════════╗╔═══════════╗\n"
 							+ "							  	║   [E]asy  ║║ [M]edium  ║║  [H]ard   ║\n"
@@ -192,25 +192,20 @@ public static void newgamemenu() {
 
 		);
 		
-		Scanner inputdiff = new Scanner(System.in);
-		String diffuculity =inputdiff.next();
+		String diffuculity =input.next();
 		
 		if (diffuculity.equalsIgnoreCase("E")) { // EASY
 			System.out.println("You have choosen EASY");
-
-			//Start game EASY MAP
-		
-			
-			
+			Maps(4);
 			
 		} else if (diffuculity.equalsIgnoreCase("M")) { // MEDIUM
 			System.out.println("You have choosen MEDIUM");
-
-			//Start game MEDIUM MAP
+			Maps(5);
 			
 		} else if (diffuculity.equalsIgnoreCase("H")) { // HARD
 			System.out.println("You have choosen HARD");
-			//Start game HARD MAP
+			Maps(8);
+			
 		}
 		
 		
@@ -227,6 +222,7 @@ public static void newgamemenu() {
 				map[i][j].monster();
 				map[i][j].tresure();
 				map[i][j].monsterinroom();
+				map[i][j].tresureinroom();
 			}
 		}
 		return map;

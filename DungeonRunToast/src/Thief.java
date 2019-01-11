@@ -9,17 +9,6 @@ public class Thief extends Character{
 		resistance = 9;
 		attack = 6;
 		flexibility = 4;
+		specialAbiltie = "Critical hit! 25% chance to do double damage!";
 	}
-	
-	void characterAttribute() 
-	{
-		System.out.println("\n\t\tHERO");
-		System.out.println("\tThief " + "[" + userName + "]" + " attributes");
-		System.out.println("\tInitiativ: " + initiativ);
-		System.out.println("\tResistance: " + resistance);
-		System.out.println("\tAttack: " + attack);
-		System.out.println("\tflexibility: " + flexibility);
-		System.out.println("(Special abilitie: Critical hit! 25% chance to do double the damage on every hit)");
-	}
-
 }
