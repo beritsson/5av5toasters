@@ -8,15 +8,16 @@ public class Character {
 	protected int resistance;
 	protected int attack;
 	protected int flexibility;
-	
+	protected String specialAbiltie;
 	
 	void characterAttribute() 
 	{
-		System.out.println("\n---------Character " + "(" + userName + ")" + " attributes-----------");
+		System.out.println(userName + " the mighty " + characterName);
 		System.out.println("\tInitiativ: " + initiativ);
 		System.out.println("\tResistance: " + resistance);
 		System.out.println("\tAttack: " + attack);
 		System.out.println("\tflexibility" + flexibility);
+		System.out.println(specialAbiltie);
 	}
 	
 	public void showAttribute(ArrayList<Character> characterList)
