@@ -266,12 +266,16 @@ public void newgamemenu(Scanner scanner) {
 	}
 	
 	public void gameLoop(Scanner scanner, Map map) {
-
+		String command = "";
 		while(true) {
+			if(!command.equals("map") || !command.equals("i")) {
+			map.getMap()[map.getPlayerlocation()[0]][map.getPlayerlocation()[1]].monsterinroom();
+			map.getMap()[map.getPlayerlocation()[0]][map.getPlayerlocation()[1]].tresureinroom();
+			}
 			System.out.println("Where do you want to go? South, East, North, West, Map");
-			String destination =scanner.nextLine().toLowerCase();
+			command =scanner.nextLine().toLowerCase();
 			
-			switch(destination) {
+			switch(command) {
 			 
 			
 			case "south":
@@ -291,7 +295,9 @@ public void newgamemenu(Scanner scanner) {
 			break;
 			default:
 				System.out.println("I didnt quite get that");
+				command = "i";
 			}
+
 		}
 	}
 

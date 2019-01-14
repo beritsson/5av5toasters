@@ -20,20 +20,18 @@ public class Map {
 	public Map(int x) {
 		Size = x;
 		Room map[][]   = new Room[x][x];
-		sw[0]= x;
-		se[0] = x;
-		se[1] = x;
-		ne[1] = x;
+		sw[1]= x-1;
+		sw[0]= x-1;
+		se[1] = x-1;
+		ne[0] = x-1; //
 
 		for (int i = 0; i < x; i++) {
 			for (int j = 0; j < x; j++) {
 				map[i][j] = new Room(); 
-				map[i][j].monsterinroom();
-				map[i][j].tresureinroom();
 				
 			}
 		}
-	
+		setMap(map);
 		
 	}
 	
@@ -157,6 +155,7 @@ public class Map {
 			lastvisited=this.playerlocation;
 			playerlocation[0]+=1;
 			System.out.println("You are now at room: [" + this.playerlocation[0]+ "," + this.playerlocation[1] + "]");
+		
 
 		}
 		else {
