@@ -3,20 +3,49 @@ import java.util.Scanner;
 
 public class Map {
 	Scanner scanner = new Scanner(System.in);
-	Point playerlocation = new Point();
-	Point lastvisited = new Point();
-	Point sw = new Point();
-	Point se = new Point();
-	Point ne = new Point();
-	Point nw = new Point();
-	Room map[][]   = null;
+	int []playerlocation;
+	int []lastvisited;
 	
-	public Point getLastvisited() {
+	Room map[][]   = null;
+	private int []sw = {0,0};
+	private int []se = {0,0};
+	private int []ne = {0,0};
+	private int []nw = {0,0};
+	private int Size;
+	
+	
+	public Map() {
+		//overload
+	}
+	public Map(int x) {
+		Size = x;
+		Room map[][]   = new Room[x][x];
+		sw[0]= x;
+		se[0] = x;
+		se[1] = x;
+		ne[1] = x;
+
+		for (int i = 0; i < x; i++) {
+			for (int j = 0; j < x; j++) {
+				map[i][j] = new Room(); 
+				map[i][j].monsterinroom();
+				map[i][j].tresureinroom();
+				
+			}
+		}
+	
+		
+	}
+	
+	
+	
+	
+	public int[] getLastvisited() {
 		return lastvisited;
 	}
 
 
-	public void setLastvisited(Point lastvisited) {
+	public void setLastvisited(int[] lastvisited) {
 		this.lastvisited = lastvisited;
 	}
 
@@ -31,125 +60,122 @@ public class Map {
 	}
 
 
-	public Point getSw() {
+	public int[] getSw() {
 		return sw;
 	}
 
 
-	public void setSw(Point sw) {
+	public void setSw(int[] sw) {
 		this.sw = sw;
 	}
 
 
-	public Point getSe() {
+	public int[] getSe() {
 		return se;
 	}
 
 
-	public void setSe(Point se) {
+	public void setSe(int[] se) {
 		this.se = se;
 	}
 
 
-	public Point getNe() {
+	public int[] getNe() {
 		return ne;
 	}
 
 
-	public void setNe(Point ne) {
+	public void setNe(int[] ne) {
 		this.ne = ne;
 	}
 
 
-	public Point getNw() {
+	public int[] getNw() {
 		return nw;
 	}
 
 
-	public void setNw(Point nw) {
+	public void setNw(int[] nw) {
 		this.nw = nw;
 	}
 
 
-	public Point getPlayerlocation() {
+	public int[] getPlayerlocation() {
 		return playerlocation;
 	}
 
 
-	public void setPlayerlocation(Point playerlocation) {
+	public void setPlayerlocation(int[] playerlocation) {
 		this.playerlocation = playerlocation;
 	}
 
-	// Set corner coodinates 
-//public Map() {
-//	//Default constructor
-//	Point sw = new Point();
-//	Point se = new Point();
-//	Point ne = new Point();
-//	Point nw = new Point();
-//	
-//}
 
-	
-	
-public void menu() {
-	
-
-	boolean menuing = true;
-	while(menuing) {;
-		System.out.println("Which corner would you like to start in?");
-		System.out.println("[L]eft upper corner \n"
-				+ "[R]ight upper corner \n" + "[LB] left bottom corner\n" + "[RB]Right bottom corner");
-		String menuchoice = scanner.nextLine().toLowerCase();
+	public void goSouth() {
 		
-		switch (menuchoice) {
-		case "l":
-		System.out.println("Start position left upper corner");
-		playerlocation = nw;
-			menuing = false;
-			break;
-		case "r":
-			System.out.println("Start position right upper corner");
-			playerlocation = ne;
-			menuing = false;
-			break;
-		case "lb":
-			System.out.println("Start position left bottom corner");
-			playerlocation = sw;
-			menuing = false;
-			break;
-		case "rb":
-			System.out.println("Start position right bottom corner");
-			playerlocation = se;
-			System.out.println(getPlayerlocation());
-			menuing = false;
-			break;
-		}
-			continue;
-	}
-}
+		if(Size>this.playerlocation[1]+1 && this.playerlocation[1]+1 >= 0 ) {
+			lastvisited=this.playerlocation;
+			playerlocation[1]+=1;
+			//map[playerlocation[0]][playerlocation[1]].monsterinroom();
+			System.out.println("You are now at room: [" + this.playerlocation[0]+ "," + this.playerlocation[1] + "]");
 
-
-public Room[][] mapSize(int x){
-	
-	Room map[][]   = new Room[x][x];
-	for (int i = 0; i < x; i++) {
-		for (int j = 0; j < x; j++) {
-			map[i][j] = new Room(); 
-			map[i][j].setPosition(i, j);
-			map[i][j].showPosition();
-//			map[i][j].monster();
-//			map[i][j].tresure();
-//			//map[i][j].monsterinroom();
-			sw.move(x,0);
-			se.move(x, x);
-			ne.move(0, x);
-			nw.move(0, 0);
 			
 		}
+		else {
+			System.out.println("No path in that direction");
+		}
 	}
-	return map;
-}
 
+	public void goWest() {
+		if(Size >this.playerlocation[0]-1 &&this.playerlocation[0]-1 >= 0 ) {
+			lastvisited=this.playerlocation;
+			playerlocation[0]-=1;
+			System.out.println("You are now at room: [" + this.playerlocation[0]+ "," + this.playerlocation[1] + "]");
+		}
+		else {
+			System.out.println("No path in that direction");
+		}
+	}
+	
+	public void drawMap() {
+		for (int i = 0; i < Size; i++) {
+			for (int j = 0; j < Size; j++) {
+				if(playerlocation[0]==j&&playerlocation[1]==i) {
+					System.out.print("[O]");
+				}
+				else {
+					System.out.print("[X]");
+				}
+				
+			}
+			System.out.println();
+		}
+	}
+	
 
+	public void goEast() {
+		if(Size>this.playerlocation[0]+1 &&this.playerlocation[0]+1 >= 0) {
+			lastvisited=this.playerlocation;
+			playerlocation[0]+=1;
+			System.out.println("You are now at room: [" + this.playerlocation[0]+ "," + this.playerlocation[1] + "]");
+
+		}
+		else {
+			System.out.println("No path in that direction");
+		}
+	}
+
+	public void goNorth() {
+		if(Size>this.playerlocation[1]-1 &&this.playerlocation[1]-1 >= 0 ) {
+			lastvisited=this.playerlocation;
+			playerlocation[1]-=1;
+			System.out.println("You are now at room: [" + this.playerlocation[0]+ "," + this.playerlocation[1] + "]");
+
+		}
+		else {
+			System.out.println("No path in that direction");
+		}
+	}
+	
+
+//end
 }

@@ -8,11 +8,12 @@ import java.util.Scanner;
 
 
 public class Game {
+	int mapSize;
 	
 	static Scanner input = new Scanner(System.in);
 	
 	public static void main(String[] args) { 
-		Map map = new Map();
+		
 		Game game = new Game();
 	
 		while (true) {
@@ -39,7 +40,7 @@ public class Game {
 
 			if (choice.equalsIgnoreCase("N")) { // START GAME
 				System.out.println("NEW GAME");
-				game.newgamemenu(map);
+				game.newgamemenu(input);
 				
 			} else if (choice.equalsIgnoreCase("L")) { // LOAD GAME
 				game.loadmenu();
@@ -121,7 +122,7 @@ public static void menulogo() {
 	}
 }
 
-public void newgamemenu(Map map) {
+public void newgamemenu(Scanner scanner) {
 
 	System.out.println(
 			  "     											     \n"			
@@ -177,12 +178,16 @@ public void newgamemenu(Map map) {
 		}
 		
 	}
-	mapmenu(map);
+	Map map = new Map(mapmenu());
+	menu(scanner, map);
+	gameLoop(scanner, map);
+	
+	
 }
 
 
 	
-	public void mapmenu(Map map){
+	public int mapmenu(){
 		while (true)  {
 			System.out.println(
 					  "     											     \n"			
@@ -200,21 +205,20 @@ public void newgamemenu(Map map) {
 			
 			if (diffuculity.equalsIgnoreCase("E")) { // EASY
 				System.out.println("You have choosen EASY");
-				map.mapSize(4);
-				map.menu();
-				break;
+				return 4;
+				
+				
 				
 			} else if (diffuculity.equalsIgnoreCase("M")) { // MEDIUM
 				System.out.println("You have choosen MEDIUM");
-				map.mapSize(5);
-				map.menu();
-				break;
+				return 5;
+				
+				
 				
 			} else if (diffuculity.equalsIgnoreCase("H")) { // HARD
 				System.out.println("You have choosen HARD");
-				map.mapSize(8);
-				map.menu();
-				break;
+				return 8;
+				
 				
 			} else {
 				System.out.println("Invalid choice, try again...\n");	
@@ -223,6 +227,72 @@ public void newgamemenu(Map map) {
 		}
 		
 		
-	}	
+	}
+	public void menu(Scanner scanner, Map map) {
+		
+
+		boolean menuing = true;
+		while(menuing) {;
+			System.out.println("Which corner would you like to start in?");
+			System.out.println("[L]eft upper corner \n"
+					+ "[R]ight upper corner \n" + "[LB] left bottom corner\n" + "[RB]Right bottom corner");
+			String menuchoice = scanner.nextLine().toLowerCase();
+			
+			
+			switch (menuchoice) {
+			case "l":
+			System.out.println("Start position left upper corner");
+			map.setPlayerlocation(map.getNw());
+				menuing = false;
+				break;
+			case "r":
+				System.out.println("Start position right upper corner");
+				map.setPlayerlocation(map.getNe());
+				menuing = false;
+				break;
+			case "lb":
+				System.out.println("Start position left bottom corner");
+				map.setPlayerlocation(map.getSe());
+				menuing = false;
+				break;
+			case "rb":
+				System.out.println("Start position right bottom corner");
+				map.setPlayerlocation(map.getSw());
+				menuing = false;
+				break;
+			}
+				continue;
+		}
+	}
+	
+	public void gameLoop(Scanner scanner, Map map) {
+
+		while(true) {
+			System.out.println("Where do you want to go? South, East, North, West, Map");
+			String destination =scanner.nextLine().toLowerCase();
+			
+			switch(destination) {
+			 
+			
+			case "south":
+			map.goSouth();
+			break;
+			case "east":
+			map.goEast();
+			break;
+			case "west":
+			map.goWest();
+			break;
+			case "north":
+			map.goNorth();
+			break;
+			case "map":
+			map.drawMap();
+			break;
+			default:
+				System.out.println("I didnt quite get that");
+			}
+		}
+	}
 
 }
