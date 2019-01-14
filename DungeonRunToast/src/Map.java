@@ -138,9 +138,9 @@ public Room[][] mapSize(int x){
 			map[i][j] = new Room(); 
 			map[i][j].setPosition(i, j);
 			map[i][j].showPosition();
-			map[i][j].monster();
-			map[i][j].tresure();
-			//map[i][j].monsterinroom();
+//			map[i][j].monster();
+//			map[i][j].tresure();
+//			//map[i][j].monsterinroom();
 			sw.move(x,0);
 			se.move(x, x);
 			ne.move(0, x);

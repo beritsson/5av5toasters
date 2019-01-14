@@ -7,6 +7,30 @@ public class Room {
 	ArrayList<Monster> monsterList = new ArrayList<Monster>();
 	ArrayList<Tresure> tresureList = new ArrayList<Tresure>();
 	
+	
+	public Room() {
+		GiantSpider gs = new GiantSpider();
+		Skeleton s = new Skeleton();
+		Orc o = new Orc();
+		Troll t = new Troll();
+		gs.addMonster(monsterList);
+		s.addMonster(monsterList);
+		o.addMonster(monsterList);
+		t.addMonster(monsterList);
+		
+		LooseMoney l = new LooseMoney();
+		Purse p = new Purse();
+		GoldJewelry gj = new GoldJewelry();
+		Gemstone g = new Gemstone();
+		TreasureChest tc = new TreasureChest();
+		l.addTresure(tresureList);
+		p.addTresure(tresureList);
+		gj.addTresure(tresureList);
+		g.addTresure(tresureList);
+		tc.addTresure(tresureList);	
+		
+	}
+	
 	void setPosition(int x, int y){
 		this.x = x +1;
 		this.y = y +1;
@@ -24,34 +48,34 @@ public class Room {
 		return y;
 	}
 
-	ArrayList<Monster> monster(){
-
-		GiantSpider gs = new GiantSpider();
-		Skeleton s = new Skeleton();
-		Orc o = new Orc();
-		Troll t = new Troll();
-		gs.addMonster(monsterList);
-		s.addMonster(monsterList);
-		o.addMonster(monsterList);
-		t.addMonster(monsterList);
-		return monsterList;
-	}
+//	ArrayList<Monster> monster(){
+//
+//		GiantSpider gs = new GiantSpider();
+//		Skeleton s = new Skeleton();
+//		Orc o = new Orc();
+//		Troll t = new Troll();
+//		gs.addMonster(monsterList);
+//		s.addMonster(monsterList);
+//		o.addMonster(monsterList);
+//		t.addMonster(monsterList);
+//		return monsterList;
+//	}
 	
 	
-	ArrayList<Tresure> tresure () {
-
-		LooseMoney l = new LooseMoney();
-		Purse p = new Purse();
-		GoldJewelry gj = new GoldJewelry();
-		Gemstone g = new Gemstone();
-		TreasureChest tc = new TreasureChest();
-		l.addTresure(tresureList);
-		p.addTresure(tresureList);
-		gj.addTresure(tresureList);
-		g.addTresure(tresureList);
-		tc.addTresure(tresureList);	
-		return tresureList;
-	}
+//	ArrayList<Tresure> tresure () {
+//
+//		LooseMoney l = new LooseMoney();
+//		Purse p = new Purse();
+//		GoldJewelry gj = new GoldJewelry();
+//		Gemstone g = new Gemstone();
+//		TreasureChest tc = new TreasureChest();
+//		l.addTresure(tresureList);
+//		p.addTresure(tresureList);
+//		gj.addTresure(tresureList);
+//		g.addTresure(tresureList);
+//		tc.addTresure(tresureList);	
+//		return tresureList;
+//	}
 	
 
 public boolean monsterinroom() {
