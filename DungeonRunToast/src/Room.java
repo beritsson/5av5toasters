@@ -8,8 +8,8 @@ public class Room {
 	ArrayList<Tresure> tresureList = new ArrayList<Tresure>();
 	
 	void setPosition(int x, int y){
-		this.x = x;
-		this.y = y;
+		this.x = x +1;
+		this.y = y +1;
 	}
 	void choosemap() {
 		

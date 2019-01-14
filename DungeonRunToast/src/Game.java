@@ -9,10 +9,11 @@ import java.util.Scanner;
 
 public class Game {
 	
-
 	static Scanner input = new Scanner(System.in);
 	
 	public static void main(String[] args) { 
+		Map map = new Map();
+		Game game = new Game();
 	
 		while (true) {
 			menulogo();
@@ -38,10 +39,10 @@ public class Game {
 
 			if (choice.equalsIgnoreCase("N")) { // START GAME
 				System.out.println("NEW GAME");
-				newgamemenu();
+				game.newgamemenu(map);
 				
 			} else if (choice.equalsIgnoreCase("L")) { // LOAD GAME
-				loadmenu();
+				game.loadmenu();
 				
 			} else if (choice.equalsIgnoreCase("E")) { // EXIT
 				System.out.println("Have a nice day!");
@@ -66,7 +67,7 @@ public class Game {
 		
 	}
 	
-	public static void loadmenu() {
+	public void loadmenu() {
 		while (true)  {
 		System.out.println(
 				  "     											     \n"			
@@ -75,6 +76,7 @@ public class Game {
 				+ "							  	╚══════════════════════════════════╝\n"
 
 		);
+		
 		
 		String pname = input.next();
 		 
@@ -119,7 +121,7 @@ public static void menulogo() {
 	}
 }
 
-public static void newgamemenu() {
+public void newgamemenu(Map map) {
 
 	System.out.println(
 			  "     											     \n"			
@@ -175,12 +177,12 @@ public static void newgamemenu() {
 		}
 		
 	}
-	mapmenu();
+	mapmenu(map);
 }
 
 
 	
-	static void mapmenu(){
+	public void mapmenu(Map map){
 		while (true)  {
 			System.out.println(
 					  "     											     \n"			
@@ -198,17 +200,20 @@ public static void newgamemenu() {
 			
 			if (diffuculity.equalsIgnoreCase("E")) { // EASY
 				System.out.println("You have choosen EASY");
-				Maps(4);
+				map.mapSize(4);
+				map.menu();
 				break;
 				
 			} else if (diffuculity.equalsIgnoreCase("M")) { // MEDIUM
 				System.out.println("You have choosen MEDIUM");
-				Maps(5);
+				map.mapSize(5);
+				map.menu();
 				break;
 				
 			} else if (diffuculity.equalsIgnoreCase("H")) { // HARD
 				System.out.println("You have choosen HARD");
-				Maps(8);
+				map.mapSize(8);
+				map.menu();
 				break;
 				
 			} else {
@@ -218,28 +223,6 @@ public static void newgamemenu() {
 		}
 		
 		
-	}
-
-	
-	
-	static Room[][] Maps(int x){
-		Room map[][] = new Room[x][x];
-		for (int i = 0; i < x; i++) {
-			for (int j = 0; j < x; j++) {
-				map[i][j] = new Room(); 
-				map[i][j].setPosition(i, j);
-				map[i][j].monster();
-				map[i][j].showPosition();
-				map[i][j].tresure();
-				map[i][j].monsterinroom();
-				map[i][j].tresureinroom();
-			}
-		}
-		return map;
-	}
-
-	
-
-		
+	}	
 
 }
