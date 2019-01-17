@@ -232,11 +232,12 @@ public void newgamemenu(Scanner scanner) {
 		
 
 		boolean menuing = true;
-		while(menuing) {;
+		while(menuing) {
+			
 			System.out.println("Which corner would you like to start in?");
 			System.out.println("[L]eft upper corner \n"
 					+ "[R]ight upper corner \n" + "[LB] left bottom corner\n" + "[RB]Right bottom corner");
-			String menuchoice = scanner.nextLine().toLowerCase();
+			String menuchoice = scanner.next().toLowerCase();
 			
 			
 			switch (menuchoice) {

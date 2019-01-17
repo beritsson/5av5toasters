@@ -7,6 +7,7 @@ public class Map {
 	int []lastvisited;
 	
 	Room map[][]   = null;
+	int visits[][]   = null;
 	private int []sw = {0,0};
 	private int []se = {0,0};
 	private int []ne = {0,0};
@@ -38,6 +39,22 @@ public class Map {
 	
 	
 	
+//	public int[][] getVisits() {
+//		return visits;
+//	}
+//	public void setVisits(int[][] visits) {
+//	int visits[][]   = new int[Size][Size];
+//		
+//
+//		for (int i = 0; i < Size; i++) {
+//			for (int j = 0; j < Size; j++) {
+//				if(lastvisited==)
+//				visits[i][j]= 1;
+//				
+//			}
+//		}
+//		this.visits = visits;
+//	}
 	public int[] getLastvisited() {
 		return lastvisited;
 	}

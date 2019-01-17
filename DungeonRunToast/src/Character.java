@@ -9,6 +9,7 @@ public class Character {
 	protected int attack;
 	protected int flexibility;
 	protected String specialAbiltie;
+	protected int treasurePoint;
 	
 	void characterAttribute() 
 	{
@@ -20,6 +21,14 @@ public class Character {
 		System.out.println(specialAbiltie);
 	}
 	
+	public int getTreasurePoint() {
+		return treasurePoint;
+	}
+
+	public void setTreasurePoint(int treasurePoint) {
+		this.treasurePoint = treasurePoint;
+	}
+
 	public void showAttribute(ArrayList<Character> characterList)
 	{
 		for (Character character : characterList) {
