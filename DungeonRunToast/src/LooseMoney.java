@@ -1,5 +1,5 @@
 
-public class LooseMoney extends Tresure {
+public class LooseMoney extends Treasure {
 
 	public LooseMoney() {
 		

@@ -271,7 +271,7 @@ public void newgamemenu(Scanner scanner) {
 		while(true) {
 			if(!command.equals("map") || !command.equals("i")) {
 			map.getMap()[map.getPlayerlocation()[0]][map.getPlayerlocation()[1]].monsterinroom();
-			map.getMap()[map.getPlayerlocation()[0]][map.getPlayerlocation()[1]].tresureinroom();
+			map.getMap()[map.getPlayerlocation()[0]][map.getPlayerlocation()[1]].treasureinroom();
 			}
 			System.out.println("Where do you want to go? South, East, North, West, Map");
 			command =scanner.nextLine().toLowerCase();

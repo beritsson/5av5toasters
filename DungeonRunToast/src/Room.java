@@ -5,12 +5,12 @@ public class Room {
 	private int x;
 	private int y;
 	ArrayList<Monster> monsterList = new ArrayList<Monster>();
-	ArrayList<Tresure> tresureList = new ArrayList<Tresure>();
+	ArrayList<Treasure> treasureList = new ArrayList<Treasure>();
 	
 	
 	public Room() {
 		monster();
-		tresure();	
+		treasure();	
 		
 	}
 	
@@ -42,19 +42,19 @@ public class Room {
 	}
 	
 	
-	ArrayList<Tresure> tresure () {
+	ArrayList<Treasure> treasure () {
 
 		LooseMoney l = new LooseMoney();
 		Purse p = new Purse();
 		GoldJewelry gj = new GoldJewelry();
 		Gemstone g = new Gemstone();
 		TreasureChest tc = new TreasureChest();
-		l.addTresure(tresureList);
-		p.addTresure(tresureList);
-		gj.addTresure(tresureList);
-		g.addTresure(tresureList);
-		tc.addTresure(tresureList);	
-		return tresureList;
+		l.addTreasure(treasureList);
+		p.addTreasure(treasureList);
+		gj.addTreasure(treasureList);
+		g.addTreasure(treasureList);
+		tc.addTreasure(treasureList);	
+		return treasureList;
 	}
 	
 
@@ -71,16 +71,16 @@ public class Room {
 			return false;}
 	
 	
-	public boolean tresureinroom() {
-		if(tresureList.size()>0) {
-			System.out.println("\nTresure:");
-			for (Tresure tresure : tresureList) {
-				tresure.attributes();
+	public boolean treasureinroom() {
+		if(treasureList.size()>0) {
+			System.out.println("\nTreasure:");
+			for (Treasure treasure : treasureList) {
+				treasure.attributes();
 				return true;
 			}
 		}	
 		else {
-		System.out.println("\nNo tresure in this room");}
+		System.out.println("\nNo treasure in this room");}
 		return false;}
 
 

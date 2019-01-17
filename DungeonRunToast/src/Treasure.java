@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Tresure {
+public class Treasure {
 	protected String type;
 	protected int value;
 	protected int commonness;
@@ -13,11 +13,11 @@ public class Tresure {
 	}
 		
 	
-	ArrayList<Tresure> addTresure(ArrayList<Tresure> tresureList){
+	ArrayList<Treasure> addTreasure(ArrayList<Treasure> treasureList){
 		if (this.commonness > (int)(Math.random()*100)){
-			tresureList.add(this);
+			treasureList.add(this);
 		}	
-		return tresureList;
+		return treasureList;
 	}
 	
 //	public int getValue() {
@@ -56,11 +56,11 @@ public class Tresure {
 
 
 	
-//	public void showAttributes(ArrayList<Tresure> tresureList0)
+//	public void showAttributes(ArrayList<Treasure> treasureList0)
 //	{
-//		for (Tresure tresure : tresureList0) {
+//		for (Treasure treasure : treasureList0) {
 //
-//			tresure.attributes();
+//			treasure.attributes();
 //		}
 //	}
 //	
