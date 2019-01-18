@@ -10,6 +10,9 @@ public class Character {
 	protected int flexibility;
 	protected String specialAbiltie;
 	protected int treasurePoint;
+	protected int fightnumber;
+	protected int fightAttack;
+	protected int fightflexibility;
 	
 	void characterAttribute() 
 	{
@@ -73,4 +76,29 @@ public class Character {
 	protected void setFlexibility(int flexibility) {
 		this.flexibility = flexibility;
 	}
+
+	public int getFightnumber() {
+		return fightnumber;
+	}
+
+	public void setFightnumber() {
+		this.fightnumber = this.initiativ*((int)(Math.random()*6)+1);
+	}
+	
+	public int getFightAttack() {
+		return fightAttack;
+	}
+
+	public void setFightAttack() {
+		this.fightAttack = this.attack*((int)(Math.random()*6)+1);
+	}
+
+	public int getFightflexibility() {
+		return fightflexibility;
+	}
+
+	public void setFightflexibility() {
+		this.fightflexibility = this.flexibility*((int)(Math.random()*6)+1);
+	}
+	
 }

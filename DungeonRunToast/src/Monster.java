@@ -7,6 +7,9 @@ public class Monster {
 	protected int attack;
 	protected int flexibility;
 	protected int commonness;
+	protected int fightnumber;
+	protected int fightAttack;
+	protected int fightflexibility;
 
 	void attributes() 
 	{
@@ -24,6 +27,14 @@ public class Monster {
 
 			monster.attributes();
 		}
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public int getInitiativ() {
@@ -67,11 +78,38 @@ public class Monster {
 	}
 	
 	
+	public int getFightnumber() {
+		return fightnumber;
+	}
+
+	public void setFightnumber() {
+		this.fightnumber = this.initiativ*((int)(Math.random()*6)+1);
+	}
+
+	
+	public int getFightAttack() {
+		return fightAttack;
+	}
+
+	public void setFightAttack() {
+		this.fightAttack = this.attack*((int)(Math.random()*6)+1);
+	}
+
+	public int getFightflexibility() {
+		return fightflexibility;
+	}
+
+	public void setFightflexibility() {
+		this.fightflexibility = this.flexibility*((int)(Math.random()*6)+1);
+	}
+
 	ArrayList<Monster> addMonster(ArrayList<Monster> monsterList){
-		if (this.commonness > (int)(Math.random()*100)){
+//		if (this.commonness > (int)(Math.random()*100)){
 			monsterList.add(this);
-		}	
+//		}	
 		return monsterList;
 	}
+
+
 
 }
