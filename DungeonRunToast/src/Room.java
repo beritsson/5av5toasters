@@ -59,16 +59,16 @@ public class Room {
 	
 
 	public boolean monsterinroom() {
-			if(monsterList.size()>0) {
-				System.out.println("\nMonster:");
-				for (Monster monster : monsterList) {
-					monster.attributes();
-					return true;
-				}
-			}		
-			else {
-			System.out.println("\nNo monsters in this room");}
-			return false;}
+		if(monsterList.size()>0) {
+			System.out.println("\nMonster:");
+			for (Monster monster : monsterList) {
+				monster.attributes();
+			}
+			return true;
+		}		
+		else {
+		System.out.println("\nNo monsters in this room");}
+		return false;}
 	
 	
 	public boolean treasureinroom() {
@@ -76,8 +76,8 @@ public class Room {
 			System.out.println("\nTreasure:");
 			for (Treasure treasure : treasureList) {
 				treasure.attributes();
-				return true;
 			}
+			return true;
 		}	
 		else {
 		System.out.println("\nNo treasure in this room");}

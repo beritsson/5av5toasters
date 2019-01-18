@@ -19,52 +19,59 @@ public class AI {
 			monster.setFightnumber();
 		}
 		Collections.sort(room.monsterList,new Comparator<Monster>(){
-			@Override
-			public int compare(Monster o1, Monster o2) {
-		        if(o1.getFightnumber() > o2.getFightnumber()){
+			public int compare(Monster m1, Monster m2) {
+		        if(m1.getFightnumber() > m2.getFightnumber()){
 		            return 1;
-		        }else if(o1.getFightnumber() == o2.getFightnumber()) {
+		        }else if(m1.getFightnumber() == m2.getFightnumber()) {
 		            return 0;
 		        }else{
 		            return -1;
 		        }
 		    }
 		});
-		
-//		for(int i = room.monsterList.size()-1; i >= 0 ; i--) {
-//			Monster m = room.monsterList.get(i);
-//	        System.out.println("monsternumber :"+m.getFightnumber()+" monstertype : "+m.getName());
-//	      }
 	}
+	
 	
 	void fightloop(){
 		fightSequence();
 		over:for (int i = room.monsterList.size()-1; i >= 0 ; i--) {
-			Monster monster = room.monsterList.get(i);
-			System.out.println("yournumber :"+character.getFightnumber());
+			Monster monster = room.monsterList.get(i);			
 			monster.attributes();
-			System.out.println("monsternumber :"+monster.getFightnumber());			
+			System.out.println("your initiativ point :"+character.getFightnumber());
+			System.out.println(monster.getName()+"'s initiativ point :"+monster.getFightnumber());			
 			System.out.println("Fight begin!");
 			if (character.getFightnumber() >= monster.getFightnumber()) {
-				while(character.getResistance()>0 && monster.getResistance()>0) {
+				while(character.getResistance()>0) {
 					activeAttack(monster);
-					beAttacked(monster);
+					if(monster.getResistance()>0) {
+						beAttacked(monster);
+					}else {
+						break;
+					}
 				}
 			}else {
-				while(character.getResistance()>0 && monster.getResistance()>0) {
+				while(monster.getResistance()>0) {
 					beAttacked(monster);
-					activeAttack(monster);					
+					if(character.getResistance()>0) {
+						activeAttack(monster);
+					}else {
+						break;
+					}										
 				}
 			}
 			
 			if (character.getResistance() > 0) {
+				room.monsterList.remove(i);
 				System.out.println(monster.getName()+" is dead. "+"you win! ");
 			}else {
 				System.out.println("you are dead, game over!");
 				break over;
 			}
 		}
-		
+		if((character.getResistance() > 0)) {
+			System.out.println("Monster clear!");
+			getTreasure();
+		}
 	}
 	
 	void activeAttack(Monster monster){		
@@ -77,8 +84,10 @@ public class AI {
 			if(character.getFightAttack() > monster.getFightflexibility()) {
 				monster.setResistance(monster.getResistance()-1);
 				System.out.println(monster.getName()+" lost 1 blood");
+				System.out.println("You have "+character.getResistance()+" blood left");
+				System.out.println(monster.getName()+" have "+monster.getResistance()+" blood left");
 			}else {
-				System.out.println(monster.getName()+" missed the attack");
+				System.out.println("Missed attack");
 			}		
 	}
 	
@@ -92,9 +101,23 @@ public class AI {
 		if(monster.getFightAttack() > character.getFightflexibility()) {
 			character.setResistance(character.getResistance()-1);
 			System.out.println("you lost 1 blood");
+			System.out.println("You have "+character.getResistance()+" blood left");
+			System.out.println(monster.getName()+" have "+monster.getResistance()+" blood left");
 		}else {
-			System.out.println("you missed the attack");
+			System.out.println("Missed attack");
 		}
+	}
+	
+	
+	void getTreasure(){
+		room.treasureinroom();
+		int point = 0;
+		for (Treasure treasure : room.treasureList) {
+			point += treasure.getValue();
+		}
+		character.setTreasurePoint(character.getTreasurePoint()+point);
+		System.out.println("You get "+character.getTreasurePoint()+" points");
+		room.treasureList.clear();
 	}
 
 	public static void main(String[] args) {
