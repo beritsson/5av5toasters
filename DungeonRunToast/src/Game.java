@@ -228,6 +228,58 @@ public void newgamemenu(Scanner scanner) {
 		
 		
 	}
+	
+	
+	
+	public static void EndMenu() {
+		
+		System.out.println(
+				  "     											     \n"			
+				+ "					 		  	╔══════════════════════════════════╗\n"
+				+ "							  	║             GAME OVER            ║\n"
+				+ "							  	╚══════════════════════════════════╝\n"
+				+ "                                                                 \n"
+				+ "                                                                     You're score is:" + " SCORE INT \n"
+				+ "                                                                 \n"
+);
+		
+		System.out.println(							
+                              "							  	╔══════════════════════════════════╗\n"
+							+ "							  	║                                  ║\n"
+							+ "							  	║              [M]enu              ║\n"
+							+ "							  	║                                  ║\n"
+							+ "							  	║              [E]xit              ║\n"
+							+ "							  	║                                  ║\n"
+							+ "							  	╚══════════════════════════════════╝\n"
+							);
+		Scanner input2 = new Scanner(System.in);
+		
+		String endchoice =input2.next();
+
+		if (endchoice.equalsIgnoreCase("M")) { // START GAME
+			System.out.println("Returning to Menu...");
+		} 
+			
+		 else if (endchoice.equalsIgnoreCase("E")) { // EXIT
+			System.out.println("Have a nice day!");
+			try {
+				Thread.sleep(50);
+			} catch (InterruptedException e) {}
+			System.out.println("\tBye....");
+			
+			try {
+				Thread.sleep(50);
+			} catch (InterruptedException e) {}
+			System.out.println("\t\tBye....");
+			System.exit(0);
+		} else {
+			System.out.println("Invalid choice, returning to Menu...\n");				
+		}
+
+		
+		
+		
+	}
 	public void menu(Scanner scanner, Map map) {
 		
 
