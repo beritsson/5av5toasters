@@ -181,7 +181,7 @@ public void newgamemenu(Scanner scanner) {
 	}
 	Map map = new Map(mapmenu());
 	menu(scanner, map);
-	gameLoop(scanner, map);
+	gameLoop(scanner, map,c);
 	
 	
 }
@@ -331,12 +331,13 @@ public void newgamemenu(Scanner scanner) {
 		}
 	}
 	
-	public void gameLoop(Scanner scanner, Map map) {
+	public void gameLoop(Scanner scanner, Map map, Character character) {
 		String command = "";
 		while(true) {
 			if(!command.equals("map") || !command.equals("i")) {
 			map.getMap()[map.getPlayerlocation()[0]][map.getPlayerlocation()[1]].monsterinroom();
 			map.getMap()[map.getPlayerlocation()[0]][map.getPlayerlocation()[1]].treasureinroom();
+			map.getMap()[map.getPlayerlocation()[0]][map.getPlayerlocation()[1]].getTreasure(character);
 			}
 			System.out.println("Where do you want to go? South, East, North, West, Map");
 			command =scanner.nextLine().toLowerCase();

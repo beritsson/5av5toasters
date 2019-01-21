@@ -82,6 +82,18 @@ public class Room {
 		else {
 		System.out.println("\nNo treasure in this room");}
 		return false;}
+	
+	
+	public void getTreasure(Character character){
+		treasureinroom();
+		int point = 0;
+		for (Treasure treasure : treasureList) {
+			point += treasure.getValue();
+		}
+		character.setTreasurePoint(character.getTreasurePoint()+point);
+		System.out.println("You get "+character.getTreasurePoint()+" points");
+		treasureList.clear();
+	}
 
 
 	 void showPosition() {

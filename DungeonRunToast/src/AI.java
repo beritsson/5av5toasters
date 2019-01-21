@@ -70,7 +70,7 @@ public class AI {
 		}
 		if((character.getResistance() > 0)) {
 			System.out.println("Monster clear!");
-			getTreasure();
+			room.getTreasure(character);
 		}
 	}
 	
@@ -109,16 +109,7 @@ public class AI {
 	}
 	
 	
-	void getTreasure(){
-		room.treasureinroom();
-		int point = 0;
-		for (Treasure treasure : room.treasureList) {
-			point += treasure.getValue();
-		}
-		character.setTreasurePoint(character.getTreasurePoint()+point);
-		System.out.println("You get "+character.getTreasurePoint()+" points");
-		room.treasureList.clear();
-	}
+
 
 	public static void main(String[] args) {
 		Room room = new Room();
