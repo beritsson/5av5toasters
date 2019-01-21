@@ -5,9 +5,9 @@ public class Map {
 	Scanner scanner = new Scanner(System.in);
 	int []playerlocation;
 	int []lastvisited;
-	
+	boolean [][] visitedRooms = null;
+
 	Room map[][]   = null;
-	int visits[][]   = null;
 	private int []sw = {0,0};
 	private int []se = {0,0};
 	private int []ne = {0,0};
@@ -34,27 +34,26 @@ public class Map {
 		}
 		setMap(map);
 		
+		boolean visitedRooms [][]= new boolean[x][x];
+		for (int i = 0; i < x; i++) {
+			for (int j = 0; j < x; j++) {
+				visitedRooms[i][j] = false; 
+				
+			}
+		}
+		setVisitedRooms(visitedRooms);
+		
+	}
+	
+	public boolean[][] getVisitedRooms() {
+		return visitedRooms;
+	}
+	public void setVisitedRooms(boolean[][] visitedRooms) {
+		this.visitedRooms = visitedRooms;
 	}
 	
 	
-	
-	
-//	public int[][] getVisits() {
-//		return visits;
-//	}
-//	public void setVisits(int[][] visits) {
-//	int visits[][]   = new int[Size][Size];
-//		
-//
-//		for (int i = 0; i < Size; i++) {
-//			for (int j = 0; j < Size; j++) {
-//				if(lastvisited==)
-//				visits[i][j]= 1;
-//				
-//			}
-//		}
-//		this.visits = visits;
-//	}
+
 	public int[] getLastvisited() {
 		return lastvisited;
 	}
@@ -127,24 +126,41 @@ public class Map {
 
 	public void goSouth() {
 		
-		if(Size>this.playerlocation[1]+1 && this.playerlocation[1]+1 >= 0 ) {
+		int i = this.playerlocation[0];
+		int j = this.playerlocation[1];
+		if(Size>this.playerlocation[1]+1 && this.playerlocation[1]+1 >= 0 && visitedRooms[i][j+1] ==false  ) {
 			lastvisited=this.playerlocation;
 			playerlocation[1]+=1;
-			//map[playerlocation[0]][playerlocation[1]].monsterinroom();
 			System.out.println("You are now at room: [" + this.playerlocation[0]+ "," + this.playerlocation[1] + "]");
+			int ii = this.playerlocation[0];
+			int jj = this.playerlocation[1];
+			visitedRooms[ii][jj] = true; 
 
-			
 		}
+		else if(Size>this.playerlocation[1]+1 &&this.playerlocation[1]+1 >= 0 && visitedRooms[i][j+1] ==true) {
+			playerlocation[1]+=1;
+			System.out.println("You have allready visited this room");
+		}
+		
 		else {
 			System.out.println("No path in that direction");
 		}
 	}
 
 	public void goWest() {
-		if(Size >this.playerlocation[0]-1 &&this.playerlocation[0]-1 >= 0 ) {
+		int i = this.playerlocation[0];
+		int j = this.playerlocation[1];
+		if(Size >this.playerlocation[0]-1 &&this.playerlocation[0]-1 >= 0 && visitedRooms[i-1][j] ==false) {
 			lastvisited=this.playerlocation;
 			playerlocation[0]-=1;
 			System.out.println("You are now at room: [" + this.playerlocation[0]+ "," + this.playerlocation[1] + "]");
+			int ii = this.playerlocation[0];
+			int jj = this.playerlocation[1];
+			visitedRooms[ii][jj] = true; 
+		}
+		else if(Size>this.playerlocation[0]-1 &&this.playerlocation[0]-1 >= 0 && visitedRooms[i-1][j] ==true) {
+			playerlocation[0]-=1;
+			System.out.println("You have allready visited this room");
 		}
 		else {
 			System.out.println("No path in that direction");
@@ -168,12 +184,21 @@ public class Map {
 	
 
 	public void goEast() {
-		if(Size>this.playerlocation[0]+1 &&this.playerlocation[0]+1 >= 0) {
+		int i = this.playerlocation[0];
+		int j = this.playerlocation[1];
+		if(Size>this.playerlocation[0]+1 &&this.playerlocation[0]+1 >= 0 && visitedRooms[i+1][j] ==false) {
 			lastvisited=this.playerlocation;
 			playerlocation[0]+=1;
 			System.out.println("You are now at room: [" + this.playerlocation[0]+ "," + this.playerlocation[1] + "]");
-		
+			int ii = this.playerlocation[0];
+			int jj = this.playerlocation[1];
+			visitedRooms[ii][jj] = true; 
 
+		}
+		else if(Size>this.playerlocation[0]+1 &&this.playerlocation[0]+1 >= 0 && visitedRooms[i+1][j] ==true) {
+			playerlocation[0]+=1;
+			System.out.println("You have allready visited this room");
+			
 		}
 		else {
 			System.out.println("No path in that direction");
@@ -181,12 +206,23 @@ public class Map {
 	}
 
 	public void goNorth() {
-		if(Size>this.playerlocation[1]-1 &&this.playerlocation[1]-1 >= 0 ) {
+		int i = this.playerlocation[0];
+		int j = this.playerlocation[1];
+		if(Size>this.playerlocation[1]-1 &&this.playerlocation[1]-1 >= 0 && visitedRooms[i][j-1] ==false) {
 			lastvisited=this.playerlocation;
 			playerlocation[1]-=1;
 			System.out.println("You are now at room: [" + this.playerlocation[0]+ "," + this.playerlocation[1] + "]");
-
+			int ii = this.playerlocation[0];
+			int jj = this.playerlocation[1];
+			visitedRooms[ii][jj] = true; 
 		}
+		else if(Size>this.playerlocation[1]-1 &&this.playerlocation[1]-1 >= 0 && visitedRooms[i][j-1] ==true) {
+			playerlocation[1]-=1;
+			System.out.println("You have allready visited this room");
+	
+		}
+		
+		
 		else {
 			System.out.println("No path in that direction");
 		}

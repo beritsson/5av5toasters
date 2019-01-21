@@ -296,22 +296,34 @@ public void newgamemenu(Scanner scanner) {
 			case "l":
 			System.out.println("Start position left upper corner");
 			map.setPlayerlocation(map.getNw());
+			int i = map.playerlocation[0];
+			int j = map.playerlocation[1];
+			map.visitedRooms[i][j] = true;
 				menuing = false;
 				break;
 			case "r":
 				System.out.println("Start position right upper corner");
 				map.setPlayerlocation(map.getNe());
+				int ii = map.playerlocation[0];
+				int jj = map.playerlocation[1];
+				map.visitedRooms[ii][jj] = true;
 				menuing = false;
 				break;
 			case "lb":
 				System.out.println("Start position left bottom corner");
 				map.setPlayerlocation(map.getSe());
+				int iii = map.playerlocation[0];
+				int jjj = map.playerlocation[1];
+				map.visitedRooms[iii][jjj] = true;
 				menuing = false;
 				break;
 			case "rb":
 				System.out.println("Start position right bottom corner");
 				map.setPlayerlocation(map.getSw());
 				menuing = false;
+				int iiii = map.playerlocation[0];
+				int jjjj = map.playerlocation[1];
+				map.visitedRooms[iiii][jjjj] = true;
 				break;
 			}
 				continue;
