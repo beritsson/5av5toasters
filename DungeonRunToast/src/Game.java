@@ -290,7 +290,7 @@ public void newgamemenu(Scanner scanner) {
 			System.out.println("[L]eft upper corner \n"
 					+ "[R]ight upper corner \n" + "[LB] left bottom corner\n" + "[RB]Right bottom corner");
 			String menuchoice = scanner.next().toLowerCase();
-			
+			String menuchoiceee = scanner.nextLine().toLowerCase();
 			
 			switch (menuchoice) {
 			case "l":
