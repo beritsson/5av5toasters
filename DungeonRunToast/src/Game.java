@@ -178,7 +178,7 @@ public void newgamemenu(Scanner scanner) {
 			
 			
 		} else if (character.equalsIgnoreCase("c")) { // AI
-			//AI FUNCTION 
+			//   AIstarter(scanner, map, character);
 			break;
 		
 		} else {
@@ -288,6 +288,14 @@ public void newgamemenu(Scanner scanner) {
 		
 		
 	}
+	
+	public void AIstarter(Map map) {
+		Room r = map.getMap()[map.getPlayerlocation()[0]][map.getPlayerlocation()[1]];
+		AI ai = new AI(r, c);
+		ai.fightloop();
+		
+	}
+	
 	public void menu(Scanner scanner, Map map) {
 		
 
@@ -344,8 +352,6 @@ public void newgamemenu(Scanner scanner) {
 			if(!command.equals("map") || !command.equals("i")) {
 				Room r = map.getMap()[map.getPlayerlocation()[0]][map.getPlayerlocation()[1]];
 				if (r.monsterList.size()>0) {
-					AI ai = new AI(r, c);
-					ai.fightloop();
 				}else {
 					System.out.println("No monster in this room!");
 					map.getMap()[map.getPlayerlocation()[0]][map.getPlayerlocation()[1]].getTreasure(character);
