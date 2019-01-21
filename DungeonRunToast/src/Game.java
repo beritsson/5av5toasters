@@ -10,6 +10,7 @@ import java.util.Scanner;
 public class Game {
 	int mapSize;
 	
+	public Character c;
 	static Scanner input = new Scanner(System.in);
 	
 	public static void main(String[] args) { 
@@ -156,20 +157,20 @@ public void newgamemenu(Scanner scanner) {
 		String character =input.next();
 		
 		if (character.equalsIgnoreCase("K")) { // KNIGHT
-			Knight knight = new Knight(pname);
-			knight.characterAttribute();
+			c = new Knight(pname);
+			c.characterAttribute();
 			break;
 	
 			
 		} else if (character.equalsIgnoreCase("W")) { // WIZARD
-			Wizard wizard = new Wizard(pname);
-			wizard.characterAttribute();
+			c = new Wizard(pname);
+			c.characterAttribute();
 			break;
 	
 			
 		} else if (character.equalsIgnoreCase("T")) { // THIEF
-			Thief thief = new Thief(pname);
-			thief.characterAttribute();
+			c = new Thief(pname);
+			c.characterAttribute();
 			break;
 			
 			
