@@ -152,6 +152,9 @@ public void newgamemenu(Scanner scanner) {
 	+ "                          ║                                    ║║                                    ║║                                    ║\n"
 	+ "                          ║                                    ║║                                    ║║                                    ║\n"
 	+ "                          ╚════════════════════════════════════╝╚════════════════════════════════════╝╚════════════════════════════════════╝\n"
+	+ "                                                                ╔════════════════════════════════════╗                                      \n"
+	+ "                                                                ║          [C]omputer plays          ║                                      \n"
+	+ "                                                                ╚════════════════════════════════════╝                                      \n"
 	
 		);
 		String character =input.next();
@@ -174,6 +177,10 @@ public void newgamemenu(Scanner scanner) {
 			break;
 			
 			
+		} else if (character.equalsIgnoreCase("c")) { // AI
+			//AI FUNCTION 
+			break;
+		
 		} else {
 			System.out.println("Invalid choice, try again...\n");	
 		}
