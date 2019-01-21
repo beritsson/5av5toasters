@@ -335,9 +335,14 @@ public void newgamemenu(Scanner scanner) {
 		String command = "";
 		while(true) {
 			if(!command.equals("map") || !command.equals("i")) {
-			map.getMap()[map.getPlayerlocation()[0]][map.getPlayerlocation()[1]].monsterinroom();
-			map.getMap()[map.getPlayerlocation()[0]][map.getPlayerlocation()[1]].treasureinroom();
-			map.getMap()[map.getPlayerlocation()[0]][map.getPlayerlocation()[1]].getTreasure(character);
+				Room r = map.getMap()[map.getPlayerlocation()[0]][map.getPlayerlocation()[1]];
+				if (r.monsterList.size()>0) {
+					AI ai = new AI(r, c);
+					ai.fightloop();
+				}else {
+					System.out.println("No monster in this room!");
+					map.getMap()[map.getPlayerlocation()[0]][map.getPlayerlocation()[1]].getTreasure(character);
+				}			
 			}
 			System.out.println("Where do you want to go? South, East, North, West, Map");
 			command =scanner.nextLine().toLowerCase();
