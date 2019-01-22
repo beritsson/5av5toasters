@@ -104,9 +104,9 @@ public class Monster {
 	}
 
 	ArrayList<Monster> addMonster(ArrayList<Monster> monsterList){
-//		if (this.commonness > (int)(Math.random()*100)){
+		if (this.commonness > (int)(Math.random()*100)){
 			monsterList.add(this);
-//		}	
+		}	
 		return monsterList;
 	}
 

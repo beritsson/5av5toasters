@@ -181,7 +181,7 @@ public void newgamemenu(Scanner scanner) {
 	}
 	Map map = new Map(mapmenu());
 	menu(scanner, map);
-	gameLoop(scanner, map,c);
+	gameLoop(scanner, map);
 	
 	
 }
@@ -291,7 +291,6 @@ public void newgamemenu(Scanner scanner) {
 			System.out.println("[L]eft upper corner \n"
 					+ "[R]ight upper corner \n" + "[LB] left bottom corner\n" + "[RB]Right bottom corner");
 			String menuchoice = scanner.next().toLowerCase();
-			String menuchoiceee = scanner.nextLine().toLowerCase();
 			
 			switch (menuchoice) {
 			case "l":
@@ -331,18 +330,12 @@ public void newgamemenu(Scanner scanner) {
 		}
 	}
 	
-	public void gameLoop(Scanner scanner, Map map, Character character) {
+	public void gameLoop(Scanner scanner, Map map) {
 		String command = "";
 		while(true) {
 			if(!command.equals("map") || !command.equals("i")) {
-				Room r = map.getMap()[map.getPlayerlocation()[0]][map.getPlayerlocation()[1]];
-				if (r.monsterList.size()>0) {
-					AI ai = new AI(r, c);
-					ai.fightloop();
-				}else {
-					System.out.println("No monster in this room!");
-					map.getMap()[map.getPlayerlocation()[0]][map.getPlayerlocation()[1]].getTreasure(character);
-				}			
+				map.getMap()[map.getPlayerlocation()[0]][map.getPlayerlocation()[1]].monsterinroom(c);
+				map.getMap()[map.getPlayerlocation()[0]][map.getPlayerlocation()[1]].getTreasure(c);		
 			}
 			System.out.println("Where do you want to go? South, East, North, West, Map");
 			command =scanner.nextLine().toLowerCase();
