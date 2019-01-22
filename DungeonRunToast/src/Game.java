@@ -74,23 +74,48 @@ public class Game {
 		System.out.println(
 				  "     											     \n"			
 				+ "					 		  	╔══════════════════════════════════╗\n"
-				+ "							  	║         PLEASE ENTER NAME        ║\n"
+				+ "							  	║            [L]oad Save           ║\n"
+				+ "							  	║                                  ║\n"
+				+ "							  	║           [C]omputer AI          ║\n"
 				+ "							  	╚══════════════════════════════════╝\n"
 
 		);
 		
 		
-		String pname = input.next();
+		String loadchoose = input.next();
 		 
-		if (pname.equalsIgnoreCase("PLAYERS")) { //----------------------------------------------------INSERT CHECK IF PLAYER NAME EXIST 
-			System.out.println("You're load has been found");
-			//Start game EASY MAP
+		if (loadchoose.equalsIgnoreCase("L")) { // Load menu
+			loadname();
 			break;
+	
 			
-		} else  { // MEDIUM
-			System.out.println("Error not found");
-				}
+		} else if (loadchoose.equalsIgnoreCase("C")) { // Load Computer AI
+			
+			break;
+	
+			
+		} else {
+			System.out.println("Invalid choice, try again...\n");	
 		}
+		}
+	}
+	
+	public void loadname() {
+	
+		System.out.println(
+				  "     											     \n"			
+				+ "					 		  	╔══════════════════════════════════╗\n"
+				+ "							  	║         PLEASE ENTER NAME        ║\n"
+				+ "							  	╚══════════════════════════════════╝\n"
+
+		);
+		
+		String pname = input.next();
+		
+	//--------------------------------------------------------------------------------------------- LOAD FUNCTION HERE
+		
+		
+		
 	}
 
 public static void menulogo() {
@@ -152,9 +177,7 @@ public void newgamemenu(Scanner scanner) {
 	+ "                          ║                                    ║║                                    ║║                                    ║\n"
 	+ "                          ║                                    ║║                                    ║║                                    ║\n"
 	+ "                          ╚════════════════════════════════════╝╚════════════════════════════════════╝╚════════════════════════════════════╝\n"
-	+ "                                                                ╔════════════════════════════════════╗                                      \n"
-	+ "                                                                ║          [C]omputer plays          ║                                      \n"
-	+ "                                                                ╚════════════════════════════════════╝                                      \n"
+
 	
 		);
 		String character =input.next();
@@ -177,10 +200,6 @@ public void newgamemenu(Scanner scanner) {
 			break;
 			
 			
-		} else if (character.equalsIgnoreCase("c")) { // AI
-			//   AIstarter(scanner, map, character);
-			break;
-		
 		} else {
 			System.out.println("Invalid choice, try again...\n");	
 		}
