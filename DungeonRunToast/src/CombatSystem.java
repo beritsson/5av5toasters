@@ -1,3 +1,4 @@
+import java.util.Random;
 import java.util.Scanner;
 
 public class CombatSystem {
@@ -5,6 +6,7 @@ public class CombatSystem {
 	Monster m;
 	Character c;
 	Scanner input;
+	Random rand;
 	
 	public CombatSystem(Character c, Monster m) {
 		
@@ -107,7 +109,7 @@ public class CombatSystem {
 			System.out.println("---------------->Its a direct hit!");
 			if(c.getClass() == Knight.class && count == 0) {
 				count++;
-				System.out.println(c.userName + " blocks the hit!");
+				System.out.println(c.userName + " blocks the hit! No damage is taken");
 			}
 			else {
 				c.setResistance(c.getResistance()-1);
@@ -122,6 +124,12 @@ public class CombatSystem {
 		else {
 			System.out.println("Attack missed!");
 		}
+	}
+	
+	public void fleeBattle() {
+		
+		rand = new Random();
+		
 	}
 
 }
