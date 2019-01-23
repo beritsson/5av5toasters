@@ -48,7 +48,7 @@ public class Game {
 				game.newgamemenu();
 
 			} else if (choice.equalsIgnoreCase("L")) { // LOAD GAME
-				game.loadmenu();
+				game.loadname();
 
 			} else if (choice.equalsIgnoreCase("E")) { // EXIT
 				System.out.println("Have a nice day!");
@@ -74,36 +74,7 @@ public class Game {
 
 	}
 
-	public void loadmenu() {
-		while (true)  {
-			System.out.println(
-					"     											     \n"			
-							+ "					 		  	╔══════════════════════════════════╗\n"
-							+ "							  	║            [L]oad Save           ║\n"
-							+ "							  	║                                  ║\n"
-							+ "							  	║           [C]omputer AI          ║\n"
-							+ "							  	╚══════════════════════════════════╝\n"
 
-					);
-
-
-			String loadchoose = input.next();
-
-			if (loadchoose.equalsIgnoreCase("L")) { // Load menu
-				loadname();
-				break;
-
-
-			} else if (loadchoose.equalsIgnoreCase("C")) { // Load Computer AI
-
-				break;
-
-
-			} else {
-				System.out.println("Invalid choice, try again...\n");	
-			}
-		}
-	}
 
 	public void loadname() {
 		while(true) {
