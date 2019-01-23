@@ -236,6 +236,8 @@ public class Game {
 	public void AIgamemenu() {
 		chooseCharacter("AI");	
 		Map map = new Map(mapmenu());
+		AI ai = new AI(map);
+		ai.go();
 	}
 
 
