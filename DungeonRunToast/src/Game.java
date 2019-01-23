@@ -63,7 +63,7 @@ public class Game {
 				System.out.println("\t\tBye....");
 				System.exit(0);
 			} else if (choice.equalsIgnoreCase("A")) {
-				game.AIstarter();
+				game.AIgamemenu();
 			} else {
 				System.out.println("Invalid choice, returning to Menu...\n");				
 			}
@@ -224,15 +224,16 @@ public class Game {
 	
 	public void newgamemenu() {
 		String pname = chooseName();
-		
-		
+		chooseCharacter(pname);			
 		Map map = new Map(mapmenu());
 		menu(map);
 		gameLoop(map);
-
-
 	}
 
+	public void AIgamemenu() {
+		chooseCharacter("AI");	
+		Map map = new Map(mapmenu());
+	}
 
 
 	public int mapmenu(){
@@ -425,9 +426,4 @@ public class Game {
 
 	}
 	
-	public void AIstarter() {
-		newgamemenu();
-
-
-	}
 }
