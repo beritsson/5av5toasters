@@ -18,12 +18,14 @@ public class Character {
 	
 	void characterAttribute() 
 	{
-		System.out.println(userName + " the mighty " + characterName);
-		System.out.println("\tInitiativ: " + initiativ);
-		System.out.println("\tResistance: " + resistance);
-		System.out.println("\tAttack: " + attack);
-		System.out.println("\tflexibility" + flexibility);
-		System.out.println(specialAbiltie);
+		System.out.println("                                                                        "+userName + " the mighty " + characterName+"\n");
+		System.out.println("                                                                     ╔═══════════════════════════╗");
+		System.out.println("                                                                     ║   "+"    Initiativ: " + initiativ + "        ║");
+		System.out.println("                                                                     ║   "+"    Resistance: " + resistance + "       ║");
+		System.out.println("                                                                     ║   "+"    Attack: " + attack + "           ║");
+		System.out.println("                                                                     ║   "+"    flexibility: " + flexibility + "      ║");
+		System.out.println("                                                                     ╚═══════════════════════════╝");
+		System.out.println("                                                \n                                                           "+specialAbiltie + "\n\n\n");
 	}
 	
 	public int getTreasurePoint() {
