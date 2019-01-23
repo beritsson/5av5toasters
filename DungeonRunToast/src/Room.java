@@ -20,7 +20,6 @@ public class Room {
 		this.y = y +1;
 	}
 
-
 	public int getX() {
 		return x;
 	}
@@ -31,10 +30,10 @@ public class Room {
 
 	ArrayList<Monster> monster(){
 
-		GiantSpider gs = new GiantSpider();
-		Skeleton s = new Skeleton();
-		Orc o = new Orc();
-		Troll t = new Troll();
+		Monster gs = new GiantSpider();
+		Monster s = new Skeleton();
+		Monster o = new Orc();
+		Monster t = new Troll();
 		gs.addMonster(monsterList);
 		s.addMonster(monsterList);
 		o.addMonster(monsterList);
@@ -66,10 +65,12 @@ public class Room {
 			for (Monster monster : monsterList) {
 				temp = monster;
 				monster.attributes();
-				fight = new CombatSystem(c, monster);
-				fight.startFight();
+				while(monster.getResistance() > 0) {
+					fight = new CombatSystem(c, monster);
+					fight.startFight();
+				}
 			}
-			if (temp.getResistance() == 0) {
+			if (temp.getResistance() <= 0) {
 				this.monsterList.remove(temp);
 			}
 			return true;
