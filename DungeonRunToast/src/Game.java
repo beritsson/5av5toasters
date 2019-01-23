@@ -256,19 +256,34 @@ public class Game {
 			String diffuculity =input.next();
 
 			if (diffuculity.equalsIgnoreCase("E")) { // EASY
-				System.out.println("You have choosen EASY");
+				System.out.println(
+						"     											     \n"			
+								+ "					 		  	╔════════════════════════════════════╗\n"
+								+ "							  	║        You have choosen EASY       ║\n"
+								+ "							  	╚════════════════════════════════════╝\n"
+									);
 				return 4;
 
 
 
 			} else if (diffuculity.equalsIgnoreCase("M")) { // MEDIUM
-				System.out.println("You have choosen MEDIUM");
+				System.out.println(
+						"     											     \n"			
+								+ "					 		  	╔════════════════════════════════════╗\n"
+								+ "							  	║       You have choosen MEDIUM      ║\n"
+								+ "							  	╚════════════════════════════════════╝\n"
+									);
 				return 5;
 
 
 
 			} else if (diffuculity.equalsIgnoreCase("H")) { // HARD
-				System.out.println("You have choosen HARD");
+				System.out.println(
+						"     											     \n"			
+								+ "					 		  	╔════════════════════════════════════╗\n"
+								+ "							  	║        You have choosen HARD       ║\n"
+								+ "							  	╚════════════════════════════════════╝\n"
+									);
 				return 8;
 
 
@@ -338,15 +353,37 @@ public class Game {
 
 		boolean menuing = true;
 		while(menuing) {
-
-			System.out.println("Which corner would you like to start in?");
-			System.out.println("[L]eft upper corner \n"
-					+ "[R]ight upper corner \n" + "[LB] left bottom corner\n" + "[RB]Right bottom corner");
+			System.out.println(
+					"     											     \n"
+							+ "                                                                 \n"
+							+ "                                                                 \n"
+							+ "                                                                 \n"
+							+ "                                                                 \n"
+							+ "					 		      ╔════════════════════════════════════════╗\n"
+							+ "							      ║Which corner would you like to start in?║\n"
+							+ "							      ╚════════════════════════════════════════╝\n"
+					);
+			
+			
+			System.out.println(
+					"     											     \n"			
+							+ "					 	╔═══════════════╗╔═══════════════╗╔═══════════════╗╔═══════════════╗\n"
+							+ "						║     [L]eft    ║║    [R]ight    ║║   [LB] Left   ║║   [RB] Right  ║\n"
+							+ "						║  upper corner ║║  upper corner ║║ bottom corner ║║ bottom corner ║\n"
+							+ "						╚═══════════════╝╚═══════════════╝╚═══════════════╝╚═══════════════╝\n"
+							);
+			
+			
 			String menuchoice = input.next().toLowerCase();
 
 			switch (menuchoice) {
 			case "l":
-				System.out.println("Start position left upper corner");
+				System.out.println(
+						"     											     \n"			
+								+ "					 		  	╔════════════════════════════════════╗\n"
+								+ "							  	║  Start position left upper corner  ║\n"
+								+ "							  	╚════════════════════════════════════╝\n\n\n"
+									);
 				map.setPlayerlocation(map.getNw());
 				int i = map.playerlocation[0];
 				int j = map.playerlocation[1];
@@ -354,7 +391,12 @@ public class Game {
 				menuing = false;
 				break;
 			case "r":
-				System.out.println("Start position right upper corner");
+				System.out.println(
+						"     											     \n"			
+								+ "					 		  	╔════════════════════════════════════╗\n"
+								+ "							  	║  Start position right upper corner ║\n"
+								+ "							  	╚════════════════════════════════════╝\n\n\n"
+									);
 				map.setPlayerlocation(map.getNe());
 				int ii = map.playerlocation[0];
 				int jj = map.playerlocation[1];
@@ -362,7 +404,12 @@ public class Game {
 				menuing = false;
 				break;
 			case "lb":
-				System.out.println("Start position left bottom corner");
+				System.out.println(
+						"     											     \n"			
+								+ "					 		  	╔════════════════════════════════════╗\n"
+								+ "							  	║  Start position left bottom corner ║\n"
+								+ "							  	╚════════════════════════════════════╝\n\n\n"
+									);
 				map.setPlayerlocation(map.getSe());
 				int iii = map.playerlocation[0];
 				int jjj = map.playerlocation[1];
@@ -370,7 +417,12 @@ public class Game {
 				menuing = false;
 				break;
 			case "rb":
-				System.out.println("Start position right bottom corner");
+				System.out.println(
+						"     											     \n"			
+								+ "					 		  	╔════════════════════════════════════╗\n"
+								+ "							  	║ Start position right bottom corner ║\n"
+								+ "							  	╚════════════════════════════════════╝\n\n\n"
+									);
 				map.setPlayerlocation(map.getSw());
 				menuing = false;
 				int iiii = map.playerlocation[0];
@@ -389,7 +441,7 @@ public class Game {
 				map.getMap()[map.getPlayerlocation()[0]][map.getPlayerlocation()[1]].monsterinroom(c);
 				map.getMap()[map.getPlayerlocation()[0]][map.getPlayerlocation()[1]].getTreasure(c);		
 
-				System.out.println("Where do you want to go?[S]outh, [E]ast, [N]orth, [W]est, Map, Save, Score, Exit");
+				System.out.println("\n\nWhere do you want to go?[S]outh, [E]ast, [N]orth, [W]est, Map, Save, Score, Exit");
 				command =input.nextLine().toLowerCase();
 
 				switch(command) {
