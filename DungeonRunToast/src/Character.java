@@ -13,6 +13,8 @@ public class Character {
 	protected int fightnumber;
 	protected int fightAttack;
 	protected int fightflexibility;
+
+	
 	
 	void characterAttribute() 
 	{
@@ -100,5 +102,6 @@ public class Character {
 	public void setFightflexibility() {
 		this.fightflexibility = this.flexibility*((int)(Math.random()*6)+1);
 	}
+
 	
 }
