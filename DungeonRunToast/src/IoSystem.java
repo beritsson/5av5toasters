@@ -107,7 +107,7 @@ public class IoSystem {
 		            		return k;
 		            		
 		            	}else {
-		            		System.out.println("No klass with the ID " + value[0] +" was found.\n Using defualt: Knight");
+		            		System.out.println("No klass with the ID " + value[0] +" not was found.\n Using defualt: Knight");
 		            	
 		            		
 		            	}
