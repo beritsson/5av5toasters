@@ -21,10 +21,10 @@ public class Map {
 	public Map(int x) {
 		Size = x;
 		Room map[][]   = new Room[x][x];
-		sw[1]= x-1;
-		sw[0]= x-1;
-		se[1] = x-1;
-		ne[0] = x-1; //
+		se[1]= x-1;
+		se[0]= x-1;
+		ne[1] = x-1;
+		sw[0] = x-1; //
 
 		for (int i = 0; i < x; i++) {
 			for (int j = 0; j < x; j++) {
@@ -74,9 +74,9 @@ public class Map {
 	}
 
 
-	public int[] getSw() {
+	public int[] getSe() {
 		System.out.println("You are now at room: [" + (Size-1)+ "," + (Size-1) + "]");
-		return sw;
+		return se;
 	}
 
 
@@ -85,9 +85,9 @@ public class Map {
 	}
 
 
-	public int[] getSe() {
+	public int[] getNe() {
 		System.out.println("You are now at room: [0," + (Size-1) + "]");
-		return se;
+		return ne;
 	}
 
 
@@ -96,9 +96,9 @@ public class Map {
 	}
 
 
-	public int[] getNe() {
+	public int[] getSw() {
 		System.out.println("You are now at room: [" + (Size-1)+ ",0]");
-		return ne;
+		return sw;
 	}
 
 
@@ -128,7 +128,7 @@ public class Map {
 	}
 	
 
-	public void goSouth() {
+	public void goEast() {
 		
 		int i = this.playerlocation[0];
 		int j = this.playerlocation[1];
@@ -151,7 +151,7 @@ public class Map {
 		}
 	}
 
-	public void goWest() {
+	public void goNorth() {
 		int i = this.playerlocation[0];
 		int j = this.playerlocation[1];
 		if(Size >this.playerlocation[0]-1 &&this.playerlocation[0]-1 >= 0 && visitedRooms[i-1][j] ==false) {
@@ -174,8 +174,11 @@ public class Map {
 	public void drawMap() {
 		for (int i = 0; i < Size; i++) {
 			for (int j = 0; j < Size; j++) {
-				if(playerlocation[0]==j&&playerlocation[1]==i) {
+				if(playerlocation[0]==i&&playerlocation[1]==j) {
 					System.out.print("[O]");
+				}
+				else if (visitedRooms[i][j] == true) {
+					System.out.print("[-]");
 				}
 				else {
 					System.out.print("[X]");
@@ -187,7 +190,7 @@ public class Map {
 	}
 	
 
-	public void goEast() {
+	public void goSouth() {
 		int i = this.playerlocation[0];
 		int j = this.playerlocation[1];
 		if(Size>this.playerlocation[0]+1 &&this.playerlocation[0]+1 >= 0 && visitedRooms[i+1][j] ==false) {
@@ -209,7 +212,7 @@ public class Map {
 		}
 	}
 
-	public void goNorth() {
+	public void goWest() {
 		int i = this.playerlocation[0];
 		int j = this.playerlocation[1];
 		if(Size>this.playerlocation[1]-1 &&this.playerlocation[1]-1 >= 0 && visitedRooms[i][j-1] ==false) {
