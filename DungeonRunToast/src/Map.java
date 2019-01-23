@@ -75,6 +75,7 @@ public class Map {
 
 
 	public int[] getSw() {
+		System.out.println("You are now at room: [" + (Size-1)+ "," + (Size-1) + "]");
 		return sw;
 	}
 
@@ -85,6 +86,7 @@ public class Map {
 
 
 	public int[] getSe() {
+		System.out.println("You are now at room: [0," + (Size-1) + "]");
 		return se;
 	}
 
@@ -95,6 +97,7 @@ public class Map {
 
 
 	public int[] getNe() {
+		System.out.println("You are now at room: [" + (Size-1)+ ",0]");
 		return ne;
 	}
 
@@ -105,6 +108,7 @@ public class Map {
 
 
 	public int[] getNw() {
+		System.out.println("You are now at room: [0,0]");
 		return nw;
 	}
 
@@ -122,7 +126,7 @@ public class Map {
 	public void setPlayerlocation(int[] playerlocation) {
 		this.playerlocation = playerlocation;
 	}
-
+	
 
 	public void goSouth() {
 		
@@ -226,6 +230,9 @@ public class Map {
 		else {
 			System.out.println("No path in that direction");
 		}
+	}
+	public int getSize() {
+		return Size;
 	}
 	
 
