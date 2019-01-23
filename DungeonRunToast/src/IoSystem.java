@@ -79,10 +79,15 @@ public class IoSystem {
 	  
 	  public static Character LoadChar(String SaveName) throws IOException{
 
+		  
 		File file = new File("saves/"+SaveName+".txt"); 
-		if(file.exists()){ 
+		
+	
+			
+			
+		
 		           
-		                                    
+		      if(file.exists()) {                              
 		            String value[] = load(SaveName).split("\\r\\n|\\n|\\r"); 
 		         	
 		            
@@ -107,7 +112,7 @@ public class IoSystem {
 		            		return k;
 		            		
 		            	}else {
-		            		System.out.println("No klass with the ID " + value[0] +" not was found.\n Using defualt: Knight");
+		            		System.out.println("No klass with the ID " + value[0] +" was found.\n Using defualt: Knight");
 		            	
 		            		
 		            	}
@@ -120,8 +125,8 @@ public class IoSystem {
 		            	
 		    
 		            }   
-		}
 		
+		      }
 		            
 		Character k = new Knight(SaveName);
 	

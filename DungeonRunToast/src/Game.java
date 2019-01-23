@@ -291,7 +291,7 @@ public class Game {
 						+ "							  	║             GAME OVER            ║\n"
 						+ "							  	╚══════════════════════════════════╝\n"
 						+ "                                                                 \n"
-						+ "                                                                     You're score is:" +c.getTreasurePoint() +" \n"
+						+ "                                                                         You're score is: " +c.getTreasurePoint() +" \n"
 						+ "                                                                 \n"
 				);
 
