@@ -32,10 +32,10 @@ public class Game {
 							+ "							  	║             [N]ew Game           ║\n"
 							+ "							  	║                                  ║\n"
 							+ "							  	║             [L]oad Game          ║\n"
-							+ "                             ║                                  ║\n"
-							+ "                             ║             [A]I Game            ║\n"
 							+ "							  	║                                  ║\n"
-							+ "							  	║              [E]xit              ║\n"
+							+ "							  	║              [A]I Game           ║\n"
+							+ "							  	║                                  ║\n"
+							+ "							  	║               [E]xit             ║\n"
 							+ "							  	║                                  ║\n"
 							+ "							  	╚══════════════════════════════════╝\n"
 
