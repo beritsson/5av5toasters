@@ -41,7 +41,7 @@ public class Game {
 
 			if (choice.equalsIgnoreCase("N")) { // START GAME
 				System.out.println("NEW GAME");
-				game.newgamemenu(input);
+				game.newgamemenu();
 
 			} else if (choice.equalsIgnoreCase("L")) { // LOAD GAME
 				game.loadmenu();
@@ -147,9 +147,9 @@ public class Game {
 			System.out.println(sb);
 		}
 	}
-
-	public void newgamemenu(Scanner scanner) {
-
+	
+	
+	public String chooseName() {
 		System.out.println(
 				"     											     \n"			
 						+ "					 		  	╔══════════════════════════════════╗\n"
@@ -158,7 +158,12 @@ public class Game {
 
 				);
 		String pname =input.next();
+		return pname;
+	}
 
+	
+	public void newgamemenu() {
+		String pname = chooseName();
 		while (true)  {
 			System.out.println(
 					"                                                                                                                   \n"			
@@ -206,8 +211,8 @@ public class Game {
 
 		}
 		Map map = new Map(mapmenu());
-		menu(scanner, map);
-		gameLoop(scanner, map);
+		menu(map);
+		gameLoop(map);
 
 
 	}
@@ -303,19 +308,10 @@ public class Game {
 			System.out.println("Invalid choice, returning to Menu...\n");				
 		}
 
-
-
-
 	}
 
-	public void AIstarter(Map map) {
-		Room r = map.getMap()[map.getPlayerlocation()[0]][map.getPlayerlocation()[1]];
-		AI ai = new AI(r, c);
-		ai.fightloop();
 
-	}
-
-	public void menu(Scanner scanner, Map map) {
+	public void menu(Map map) {
 
 
 		boolean menuing = true;
@@ -324,7 +320,7 @@ public class Game {
 			System.out.println("Which corner would you like to start in?");
 			System.out.println("[L]eft upper corner \n"
 					+ "[R]ight upper corner \n" + "[LB] left bottom corner\n" + "[RB]Right bottom corner");
-			String menuchoice = scanner.next().toLowerCase();
+			String menuchoice = input.next().toLowerCase();
 
 			switch (menuchoice) {
 			case "l":
@@ -364,7 +360,7 @@ public class Game {
 		}
 	}
 
-	public void gameLoop(Scanner scanner, Map map) {
+	public void gameLoop(Map map) {
 		String command = "";
 		while(true) {
 			if(!command.equals("map") || !command.equals("i")) {
@@ -372,7 +368,7 @@ public class Game {
 				map.getMap()[map.getPlayerlocation()[0]][map.getPlayerlocation()[1]].getTreasure(c);		
 
 				System.out.println("Where do you want to go? South, East, North, West, Map");
-				command =scanner.nextLine().toLowerCase();
+				command =input.nextLine().toLowerCase();
 
 				switch(command) {
 
