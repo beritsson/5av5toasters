@@ -338,10 +338,26 @@ public class Game {
 
 		boolean menuing = true;
 		while(menuing) {
+			System.out.println(
+					"     											     \n"			
+							+ "					 		  	╔════════════════════════════════════════╗\n"
+							+ "							  	║Which corner would you like to start in?║\n"
+							+ "							  	╚════════════════════════════════════════╝\n"
+							+ "                                                                 \n"
+							+ "                                                                 \n"
+					);
+			
+			
+			System.out.println(
+					"     											     \n"			
+							+ "					 	╔═══════════════╗╔═══════════════╗╔═══════════════╗╔═══════════════╗\n"
+							+ "						║     [L]eft    ║║    [R]ight    ║║   [LB] Left   ║║   [RB] Right  ║\n"
+							+ "						║  upper corner ║║  upper corner ║║ bottom corner ║║ bottom corner ║\n"
+							+ "						╚═══════════════╝╚═══════════════╝╚═══════════════╝╚═══════════════╝\n"
 
-			System.out.println("Which corner would you like to start in?");
-			System.out.println("[L]eft upper corner \n"
-					+ "[R]ight upper corner \n" + "[LB] left bottom corner\n" + "[RB]Right bottom corner");
+					);
+			
+			
 			String menuchoice = input.next().toLowerCase();
 
 			switch (menuchoice) {
