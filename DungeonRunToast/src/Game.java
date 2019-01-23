@@ -98,7 +98,9 @@ public class Game {
 				Map map = new Map(mapmenu());
 				menu(map);
 				gameLoop(map);
-				break;
+				EndMenu();
+				return;
+				
 			}else if(pname.equals("exit")) {
 				
 				System.out.println("Exiting to menu");
@@ -228,6 +230,7 @@ public class Game {
 		Map map = new Map(mapmenu());
 		menu(map);
 		gameLoop(map);
+		EndMenu();
 	}
 
 	public void AIgamemenu() {
@@ -280,7 +283,7 @@ public class Game {
 
 
 
-	public static void EndMenu() {
+	public void EndMenu() {
 
 		System.out.println(
 				"     											     \n"			
@@ -288,7 +291,7 @@ public class Game {
 						+ "							  	║             GAME OVER            ║\n"
 						+ "							  	╚══════════════════════════════════╝\n"
 						+ "                                                                 \n"
-						+ "                                                                     You're score is:" + " SCORE INT \n"
+						+ "                                                                     You're score is:" +c.getTreasurePoint() +" \n"
 						+ "                                                                 \n"
 				);
 
@@ -307,6 +310,7 @@ public class Game {
 
 		if (endchoice.equalsIgnoreCase("M")) { // START GAME
 			System.out.println("Returning to Menu...");
+	
 		} 
 
 		else if (endchoice.equalsIgnoreCase("E")) { // EXIT
@@ -322,7 +326,8 @@ public class Game {
 			System.out.println("\t\tBye....");
 			System.exit(0);
 		} else {
-			System.out.println("Invalid choice, returning to Menu...\n");				
+			System.out.println("Invalid choice, returning to Menu...\n");	
+			
 		}
 
 	}
@@ -384,7 +389,7 @@ public class Game {
 				map.getMap()[map.getPlayerlocation()[0]][map.getPlayerlocation()[1]].monsterinroom(c);
 				map.getMap()[map.getPlayerlocation()[0]][map.getPlayerlocation()[1]].getTreasure(c);		
 
-				System.out.println("Where do you want to go? South, East, North, West, Map, Save, Score");
+				System.out.println("Where do you want to go? South, East, North, West, Map, Save, Score, Exit");
 				command =input.nextLine().toLowerCase();
 
 				switch(command) {
@@ -416,6 +421,10 @@ public class Game {
 					break;
 				case "score":
 					System.out.println("You have a score of " + c.getTreasurePoint() );
+					break;
+				case "exit":
+					return;
+				
 				default:
 					System.out.println("I didnt quite get that");
 					command = "i";
