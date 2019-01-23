@@ -3,8 +3,10 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
-//import java.io.IOException;
+import java.io.IOException;
 import java.util.Scanner;
+
+
 
 
 public class Game {
@@ -31,7 +33,9 @@ public class Game {
 							+ "							  	║                                  ║\n"
 							+ "							  	║             [L]oad Game          ║\n"
 							+ "							  	║                                  ║\n"
-							+ "							  	║              [E]xit              ║\n"
+							+ "							  	║              [A]I Game           ║\n"
+							+ "							  	║                                  ║\n"
+							+ "							  	║               [E]xit             ║\n"
 							+ "							  	║                                  ║\n"
 							+ "							  	╚══════════════════════════════════╝\n"
 
@@ -41,10 +45,10 @@ public class Game {
 
 			if (choice.equalsIgnoreCase("N")) { // START GAME
 				System.out.println("NEW GAME");
-				game.newgamemenu(input);
+				game.newgamemenu();
 
 			} else if (choice.equalsIgnoreCase("L")) { // LOAD GAME
-				game.loadmenu();
+				game.loadname();
 
 			} else if (choice.equalsIgnoreCase("E")) { // EXIT
 				System.out.println("Have a nice day!");
@@ -58,7 +62,8 @@ public class Game {
 				} catch (InterruptedException e) {}
 				System.out.println("\t\tBye....");
 				System.exit(0);
-				//			} else if (choice.equalsIgnoreCase("A")) {
+			} else if (choice.equalsIgnoreCase("A")) {
+				game.AIgamemenu();
 			} else {
 				System.out.println("Invalid choice, returning to Menu...\n");				
 			}
@@ -69,51 +74,43 @@ public class Game {
 
 	}
 
-	public void loadmenu() {
-		while (true)  {
+
+
+	public void loadname() {
+		while(true) {
 			System.out.println(
 					"     											     \n"			
 							+ "					 		  	╔══════════════════════════════════╗\n"
-							+ "							  	║            [L]oad Save           ║\n"
-							+ "							  	║                                  ║\n"
-							+ "							  	║           [C]omputer AI          ║\n"
+							+ "							  	║         PLEASE ENTER NAME        ║\n"
 							+ "							  	╚══════════════════════════════════╝\n"
-
+	
 					);
-
-
-			String loadchoose = input.next();
-
-			if (loadchoose.equalsIgnoreCase("L")) { // Load menu
-				loadname();
+	
+			String pname = input.next();
+			if(IoSystem.CheckSave(pname)) {
+				 try {
+					c = IoSystem.LoadChar(pname);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				Map map = new Map(mapmenu());
+				menu(map);
+				gameLoop(map);
+				EndMenu();
+				return;
+				
+			}else if(pname.equals("exit")) {
+				
+				System.out.println("Exiting to menu");
 				break;
-
-
-			} else if (loadchoose.equalsIgnoreCase("C")) { // Load Computer AI
-
-				break;
-
-
-			} else {
-				System.out.println("Invalid choice, try again...\n");	
+			}else {
+				System.out.println("File not found");
 			}
 		}
-	}
-
-	public void loadname() {
-
-		System.out.println(
-				"     											     \n"			
-						+ "					 		  	╔══════════════════════════════════╗\n"
-						+ "							  	║         PLEASE ENTER NAME        ║\n"
-						+ "							  	╚══════════════════════════════════╝\n"
-
-				);
-
-		String pname = input.next();
-
-		//--------------------------------------------------------------------------------------------- LOAD FUNCTION HERE
-
+	
+		
 
 
 	}
@@ -147,9 +144,9 @@ public class Game {
 			System.out.println(sb);
 		}
 	}
-
-	public void newgamemenu(Scanner scanner) {
-
+	
+	
+	public String chooseName() {
 		System.out.println(
 				"     											     \n"			
 						+ "					 		  	╔══════════════════════════════════╗\n"
@@ -158,7 +155,11 @@ public class Game {
 
 				);
 		String pname =input.next();
+		return pname;
+	}
 
+	
+	public void chooseCharacter(String pname) {
 		while (true)  {
 			System.out.println(
 					"                                                                                                                   \n"			
@@ -185,18 +186,33 @@ public class Game {
 			if (character.equalsIgnoreCase("K")) { // KNIGHT
 				c = new Knight(pname);
 				c.characterAttribute();
+				try {
+					IoSystem.save(c);
+				} catch (IOException e) {
+					System.out.println("Auto saving faild");
+				}
 				break;
 
 
 			} else if (character.equalsIgnoreCase("W")) { // WIZARD
 				c = new Wizard(pname);
 				c.characterAttribute();
+				try {
+					IoSystem.save(c);
+				} catch (IOException e) {
+					System.out.println("Auto saving faild");
+				}
 				break;
 
 
 			} else if (character.equalsIgnoreCase("T")) { // THIEF
 				c = new Thief(pname);
 				c.characterAttribute();
+				try {
+					IoSystem.save(c);
+				} catch (IOException e) {
+					System.out.println("Auto saving faild");
+				}
 				break;
 
 
@@ -205,13 +221,22 @@ public class Game {
 			}
 
 		}
+	}
+	
+	
+	public void newgamemenu() {
+		String pname = chooseName();
+		chooseCharacter(pname);			
 		Map map = new Map(mapmenu());
-		menu(scanner, map);
-		gameLoop(scanner, map);
-
-
+		menu(map);
+		gameLoop(map);
+		EndMenu();
 	}
 
+	public void AIgamemenu() {
+		chooseCharacter("AI");	
+		Map map = new Map(mapmenu());
+	}
 
 
 	public int mapmenu(){
@@ -258,7 +283,7 @@ public class Game {
 
 
 
-	public static void EndMenu() {
+	public void EndMenu() {
 
 		System.out.println(
 				"     											     \n"			
@@ -266,7 +291,7 @@ public class Game {
 						+ "							  	║             GAME OVER            ║\n"
 						+ "							  	╚══════════════════════════════════╝\n"
 						+ "                                                                 \n"
-						+ "                                                                     You're score is:" + " SCORE INT \n"
+						+ "                                                                         You're score is: " +c.getTreasurePoint() +" \n"
 						+ "                                                                 \n"
 				);
 
@@ -285,6 +310,7 @@ public class Game {
 
 		if (endchoice.equalsIgnoreCase("M")) { // START GAME
 			System.out.println("Returning to Menu...");
+	
 		} 
 
 		else if (endchoice.equalsIgnoreCase("E")) { // EXIT
@@ -300,22 +326,14 @@ public class Game {
 			System.out.println("\t\tBye....");
 			System.exit(0);
 		} else {
-			System.out.println("Invalid choice, returning to Menu...\n");				
+			System.out.println("Invalid choice, returning to Menu...\n");	
+			
 		}
 
-
-
-
 	}
 
-	public void AIstarter(Map map) {
-		Room r = map.getMap()[map.getPlayerlocation()[0]][map.getPlayerlocation()[1]];
-		AI ai = new AI(r, c);
-		ai.fightloop();
 
-	}
-
-	public void menu(Scanner scanner, Map map) {
+	public void menu(Map map) {
 
 
 		boolean menuing = true;
@@ -324,7 +342,7 @@ public class Game {
 			System.out.println("Which corner would you like to start in?");
 			System.out.println("[L]eft upper corner \n"
 					+ "[R]ight upper corner \n" + "[LB] left bottom corner\n" + "[RB]Right bottom corner");
-			String menuchoice = scanner.next().toLowerCase();
+			String menuchoice = input.next().toLowerCase();
 
 			switch (menuchoice) {
 			case "l":
@@ -364,34 +382,49 @@ public class Game {
 		}
 	}
 
-	public void gameLoop(Scanner scanner, Map map) {
+	public void gameLoop(Map map) {
 		String command = "";
 		while(true) {
 			if(!command.equals("map") || !command.equals("i")) {
 				map.getMap()[map.getPlayerlocation()[0]][map.getPlayerlocation()[1]].monsterinroom(c);
 				map.getMap()[map.getPlayerlocation()[0]][map.getPlayerlocation()[1]].getTreasure(c);		
 
-				System.out.println("Where do you want to go? South, East, North, West, Map");
-				command =scanner.nextLine().toLowerCase();
+				System.out.println("Where do you want to go?[S]outh, [E]ast, [N]orth, [W]est, Map, Save, Score, Exit");
+				command =input.nextLine().toLowerCase();
 
 				switch(command) {
 
 
-				case "south":
+				case "s":
 					map.goSouth();
 					break;
-				case "east":
+				case "e":
 					map.goEast();
 					break;
-				case "west":
+				case "w":
 					map.goWest();
 					break;
-				case "north":
+				case "n":
 					map.goNorth();
 					break;
 				case "map":
 					map.drawMap();
 					break;
+				case "save":
+					try {
+						IoSystem.save(c);
+						System.out.println("You saved the game");
+					} catch (IOException e) {
+						System.out.println("Saving faild");
+					
+					}
+					break;
+				case "score":
+					System.out.println("You have a score of " + c.getTreasurePoint() );
+					break;
+				case "exit":
+					return;
+				
 				default:
 					System.out.println("I didnt quite get that");
 					command = "i";
@@ -401,4 +434,5 @@ public class Game {
 		}
 
 	}
+	
 }
