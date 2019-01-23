@@ -389,22 +389,22 @@ public class Game {
 				map.getMap()[map.getPlayerlocation()[0]][map.getPlayerlocation()[1]].monsterinroom(c);
 				map.getMap()[map.getPlayerlocation()[0]][map.getPlayerlocation()[1]].getTreasure(c);		
 
-				System.out.println("Where do you want to go? South, East, North, West, Map, Save, Score, Exit");
+				System.out.println("Where do you want to go?[S]outh, [E]ast, [N]orth, [W]est, Map, Save, Score, Exit");
 				command =input.nextLine().toLowerCase();
 
 				switch(command) {
 
 
-				case "south":
+				case "s":
 					map.goSouth();
 					break;
-				case "east":
+				case "e":
 					map.goEast();
 					break;
-				case "west":
+				case "w":
 					map.goWest();
 					break;
-				case "north":
+				case "n":
 					map.goNorth();
 					break;
 				case "map":
