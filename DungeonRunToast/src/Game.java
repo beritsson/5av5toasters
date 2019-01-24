@@ -494,6 +494,8 @@ public class Game {
 					System.out.println("You have a score of " + c.getTreasurePoint() );
 					break;
 				
+	//			case "exit":
+	//				return;
 				
 				default:
 					System.out.println("I didnt quite get that");
