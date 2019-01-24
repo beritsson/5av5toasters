@@ -390,6 +390,8 @@ public class Game {
 				int i = map.playerlocation[0];
 				int j = map.playerlocation[1];
 				map.visitedRooms[i][j] = true;
+				map.lastvisited[0]=map.playerlocation[0];
+				map.lastvisited[1]=map.playerlocation[1];
 				menuing = false;
 				break;
 			case "r":
@@ -403,6 +405,8 @@ public class Game {
 				int ii = map.playerlocation[0];
 				int jj = map.playerlocation[1];
 				map.visitedRooms[ii][jj] = true;
+				map.lastvisited[0]=map.playerlocation[0];
+				map.lastvisited[1]=map.playerlocation[1];
 				menuing = false;
 				break;
 			case "lb":
@@ -416,6 +420,8 @@ public class Game {
 				int iii = map.playerlocation[0];
 				int jjj = map.playerlocation[1];
 				map.visitedRooms[iii][jjj] = true;
+				map.lastvisited[0]=map.playerlocation[0];
+				map.lastvisited[1]=map.playerlocation[1];
 				menuing = false;
 				break;
 			case "rb":
@@ -430,6 +436,9 @@ public class Game {
 				int iiii = map.playerlocation[0];
 				int jjjj = map.playerlocation[1];
 				map.visitedRooms[iiii][jjjj] = true;
+				map.lastvisited[0]=map.playerlocation[0];
+				map.lastvisited[1]=map.playerlocation[1];
+				menuing = false;
 				break;
 			}
 			continue;
@@ -458,7 +467,6 @@ public class Game {
 			}
 			}
 			if(game) {
-
 
 				System.out.println("\n\nWhere do you want to go?[S]outh, [E]ast, [N]orth, [W]est, Map, Save, Score");
 				command =input.next().toLowerCase();

@@ -3,7 +3,8 @@ import java.util.Scanner;
 public class Map {
 	Scanner scanner = new Scanner(System.in);
 	int []playerlocation;
-	int []lastvisited;
+	int []lastvisited = {0,0};
+	
 	boolean [][] visitedRooms = null;
 
 	
@@ -151,7 +152,8 @@ public class Map {
 		int i = this.playerlocation[0];
 		int j = this.playerlocation[1];
 		if(Size>this.playerlocation[1]+1 && this.playerlocation[1]+1 >= 0 && visitedRooms[i][j+1] ==false  ) {
-			lastvisited=this.playerlocation;
+			lastvisited[0]=this.playerlocation[0];
+			lastvisited[1]=this.playerlocation[1];
 			playerlocation[1]+=1;
 			System.out.println("You are now at room: [" + this.playerlocation[0]+ "," + this.playerlocation[1] + "]");
 			int ii = this.playerlocation[0];
@@ -173,7 +175,8 @@ public class Map {
 		int i = this.playerlocation[0];
 		int j = this.playerlocation[1];
 		if(Size >this.playerlocation[0]-1 &&this.playerlocation[0]-1 >= 0 && visitedRooms[i-1][j] ==false) {
-			lastvisited=this.playerlocation;
+			lastvisited[0]=this.playerlocation[0];
+			lastvisited[1]=this.playerlocation[1];
 			playerlocation[0]-=1;
 			System.out.println("You are now at room: [" + this.playerlocation[0]+ "," + this.playerlocation[1] + "]");
 			int ii = this.playerlocation[0];
@@ -212,7 +215,8 @@ public class Map {
 		int i = this.playerlocation[0];
 		int j = this.playerlocation[1];
 		if(Size>this.playerlocation[0]+1 &&this.playerlocation[0]+1 >= 0 && visitedRooms[i+1][j] ==false) {
-			this.lastvisited=this.playerlocation;
+			lastvisited[0]=this.playerlocation[0];
+			lastvisited[1]=this.playerlocation[1];
 			playerlocation[0]+=1;
 			System.out.println("You are now at room: [" + this.playerlocation[0]+ "," + this.playerlocation[1] + "]");
 			int ii = this.playerlocation[0];
@@ -235,7 +239,8 @@ public class Map {
 		int i = this.playerlocation[0];
 		int j = this.playerlocation[1];
 		if(Size>this.playerlocation[1]-1 &&this.playerlocation[1]-1 >= 0 && visitedRooms[i][j-1] ==false) {
-			lastvisited=this.playerlocation;
+			lastvisited[0]=this.playerlocation[0];
+			lastvisited[1]=this.playerlocation[1];
 			playerlocation[1]-=1;
 			System.out.println("You are now at room: [" + this.playerlocation[0]+ "," + this.playerlocation[1] + "]");
 			int ii = this.playerlocation[0];

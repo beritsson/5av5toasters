@@ -4,7 +4,6 @@ public class CombatSystem {
 	boolean flee = true;
 	Monster m;
 	Character c;
-	Map map;
 	Scanner input;
 	boolean block;
 	
@@ -13,7 +12,6 @@ public class CombatSystem {
 		this.c = c;
 		this.m = m;
 		block = false;
-		this.map = map;
 		
 	}
 
@@ -163,7 +161,10 @@ public class CombatSystem {
 		}
 		else if(Math.random()*100 < c.getFlexibility()*10) {
 			System.out.println("You succesfully escaped!");
-			map.setPlayerlocation(map.getLastvisited());
+			
+			map.playerlocation[0] = map.lastvisited[0];
+			map.playerlocation[1] = map.lastvisited[1];
+			//map.setPlayerlocation(map.getLastvisited());
 //			map.playerlocation = map.lastvisited;
 //			map.getPlayerlocation()[0] =	map.getLastvisited()[0];
 //			map.getPlayerlocation()[1] =	map.getLastvisited()[1];
