@@ -442,7 +442,7 @@ public class Game {
 		while(game) {
 			if(!command.equals("map") || !command.equals("i")) {
 				
-				
+			
 			map.getMap()[map.getPlayerlocation()[0]][map.getPlayerlocation()[1]].monsterinroom(c, map);
 			map.getMap()[map.getPlayerlocation()[0]][map.getPlayerlocation()[1]].treasureinroom();
 			if(map.getMap()[map.getPlayerlocation()[0]][map.getPlayerlocation()[1]].isDoor()) {

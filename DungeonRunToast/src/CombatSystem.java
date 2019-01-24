@@ -92,7 +92,7 @@ public class CombatSystem {
 				this.flee = false;
 				break;
 				
-			
+		
 			}
 			break;
 		case "F":

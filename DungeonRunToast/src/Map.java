@@ -6,6 +6,7 @@ public class Map {
 	int []lastvisited;
 	boolean [][] visitedRooms = null;
 
+	
 	Room map[][]   = null;
 	private int []sw = {0,0};
 	private int []se = {0,0};

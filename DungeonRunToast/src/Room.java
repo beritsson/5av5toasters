@@ -78,7 +78,7 @@ public class Room {
 				combat.startFight(map);
 				temp = monster;
 			}
-			
+		
 			
 			this.monsterList.remove(temp);
 			return true;
