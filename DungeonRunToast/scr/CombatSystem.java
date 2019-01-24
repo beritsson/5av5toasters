@@ -23,7 +23,7 @@ public class CombatSystem {
 		this.block = block;
 	}
 
-	public void startFight(Map map) {
+	public void startFight() {
 		c.setFightnumber();
 		m.setFightnumber();
 
@@ -34,7 +34,7 @@ public class CombatSystem {
 		if(c.getFightnumber() > m.getFightnumber()) {
 			System.out.println("\n-------------->>" + c.userName + " makes the first move!");
 			while (m.getResistance() > 0 && c.getResistance() > 0) {
-				fightC(map);
+				fightC();
 				fightM();
 			}
 		}
@@ -42,12 +42,12 @@ public class CombatSystem {
 			System.out.println("\n-------------->>" + m.name + " makes the first move!");
 			while (m.getResistance() > 0 && c.getResistance() > 0) {
 				fightM();
-				fightC(map);
+				fightC();
 			}
 		}
 	}
 	
-	public void fightC(Map map) {
+	public void fightC() {
 		
 		c.setFightAttack();
 		m.setFightflexibility();
@@ -89,7 +89,7 @@ public class CombatSystem {
 			}
 			break;
 		case "F":
-			fleeBattle(map);
+			fleeBattle();
 			break;
 		default:
 			break;
@@ -133,11 +133,10 @@ public class CombatSystem {
 
 	}
 	
-	public boolean fleeBattle(Map map) {
+	public boolean fleeBattle() {
 		if (c.getClass() == Wizard.class) {
 			if(Math.random()*100 < c.getFightflexibility()*80) {
 				System.out.println("You succesfully escaped!");
-				map.getMap()[map.getLastvisited()[0]][map.getLastvisited()[1]].monsterinroom(c, map);
 				return true;
 			}
 			else {
@@ -156,4 +155,3 @@ public class CombatSystem {
 	}
 
 }
-

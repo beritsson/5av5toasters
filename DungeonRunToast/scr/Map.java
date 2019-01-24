@@ -1,3 +1,4 @@
+import java.awt.Point;
 import java.util.Scanner;
 
 public class Map {
@@ -20,34 +21,16 @@ public class Map {
 	public Map(int x) {
 		Size = x;
 		Room map[][]   = new Room[x][x];
-		sw[1]= x-1;
-		sw[0]= x-1;
-		se[1] = x-1;
-		ne[0] = x-1; //
-		boolean doorIsSet = false;
-
 		se[1]= x-1;
 		se[0]= x-1;
 		ne[1] = x-1;
 		sw[0] = x-1; //
 
-		
 		for (int i = 0; i < x; i++) {
 			for (int j = 0; j < x; j++) {
-				map[i][j] = new Room();
-		if ((int)(Math.random()*100) > 89 && !doorIsSet){
-					map[i][j].setDoor(true);
-					doorIsSet = true;
-				}
-		
+				map[i][j] = new Room(); 
 				
 			}
-		
-		}
-		if(!doorIsSet) {
-			
-			map[(int)(Math.random()*(x-1))][(int)(Math.random()*(x-1))].setDoor(true);
-			doorIsSet=true;
 		}
 		setMap(map);
 		
@@ -69,7 +52,17 @@ public class Map {
 		this.visitedRooms = visitedRooms;
 	}
 	
-	
+	boolean clearMap(){
+		boolean clear = true;
+		for (int i = 0; i < Size; i++) {
+			for (int j = 0; j < Size; j++) {
+				if(visitedRooms[i][j] == false) {
+					clear = false;
+				}				
+			}
+		}
+		return clear;
+	}
 
 	public int[] getLastvisited() {
 		return lastvisited;
@@ -146,7 +139,7 @@ public class Map {
 	
 
 	public void goEast() {
-		
+
 		int i = this.playerlocation[0];
 		int j = this.playerlocation[1];
 		if(Size>this.playerlocation[1]+1 && this.playerlocation[1]+1 >= 0 && visitedRooms[i][j+1] ==false  ) {

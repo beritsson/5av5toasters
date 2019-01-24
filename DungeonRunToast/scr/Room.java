@@ -8,7 +8,6 @@ public class Room {
 	CombatSystem combat;
 	ArrayList<Monster> monsterList = new ArrayList<Monster>();
 	ArrayList<Treasure> treasureList = new ArrayList<Treasure>();
-	boolean door = false;
 	
 	
 	public Room() {
@@ -17,14 +16,6 @@ public class Room {
 		
 	}
 	
-	public boolean isDoor() {
-		return door;
-	}
-
-	public void setDoor(boolean door) {
-		this.door = door;
-	}
-
 	void setPosition(int x, int y){
 		this.x = x +1;
 		this.y = y +1;
@@ -50,7 +41,6 @@ public class Room {
 		t.addMonster(monsterList);
 		return monsterList;
 	}
-
 	
 	
 	ArrayList<Treasure> treasure () {
@@ -68,14 +58,14 @@ public class Room {
 		return treasureList;
 	}
 
-	public boolean monsterinroom(Character c, Map map) {
+	public boolean monsterinroom(Character c) {
 		Monster temp = null;
 		if(monsterList.size()>0) {
 			System.out.println("\nMonster:");
 			for (Monster monster : monsterList) {
 				monster.attributes();
 				combat = new CombatSystem(c, monster);
-				combat.startFight(map);
+				combat.startFight();
 				temp = monster;
 			}
 			
@@ -113,7 +103,6 @@ public class Room {
 
 
 	 void showPosition() {
-		 System.out.println("Returning to previous room");
 		 System.out.println("\nRoom [x=" + x + ", y=" + y + "]");
 		 //monsterinroom();
 		 
