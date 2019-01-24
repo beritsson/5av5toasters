@@ -434,7 +434,7 @@ public class Game {
 		}
 	}
 
-	public void gameLoop(Map map, Scanner scanner) {
+	public static void gameLoop(Map map, Scanner scanner) {
 		String command = "";
 		boolean game = true;
 		while(game) {

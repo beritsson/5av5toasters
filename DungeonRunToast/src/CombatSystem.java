@@ -1,17 +1,19 @@
 import java.util.Scanner;
 
 public class CombatSystem {
-
+	boolean flee = true;
 	Monster m;
 	Character c;
+	Map map;
 	Scanner input;
 	boolean block;
 	
-	public CombatSystem(Character c, Monster m) {
+	public CombatSystem(Character c, Monster m, Map map) {
 		
 		this.c = c;
 		this.m = m;
 		block = false;
+		this.map = map;
 		
 	}
 
@@ -31,7 +33,7 @@ public class CombatSystem {
 		System.out.println("(" + m.name + " rolls: " + m.getFightnumber() + ")");
 
 
-		if(c.getFightnumber() > m.getFightnumber()) {
+		if(c.getFightnumber() > m.getFightnumber() && flee == true) {
 			System.out.println("\n-------------->>" + c.userName + " makes the first move!");
 			while (m.getResistance() > 0 && c.getResistance() > 0) {
 				fightC(map);
@@ -49,9 +51,10 @@ public class CombatSystem {
 	
 	public void fightC(Map map) {
 		
+		
+		if(flee) {
 		c.setFightAttack();
 		m.setFightflexibility();
-		
 		input = new Scanner(System.in);
 		System.out.println("Your turn! What do you want to do?");
 		System.out.println("[A]ttack\n[F]lee");
@@ -86,27 +89,33 @@ public class CombatSystem {
 			if(m.getResistance() <= 0) {
 				System.out.println("\n[-------" + m.name + " is dead! You won this fight!------]");
 				System.out.println("(" + c.userName + " has " + c.getResistance() + "hp left!)");
+				this.flee = false;
+				break;
+			
 			}
 			break;
 		case "F":
-			if(fleeBattle(map)) {
-				
-			
-			map.getMap()[map.getLastvisited()[0]][map.getLastvisited()[1]].monsterinroom(c, map);}
-			break;
+		    fleeBattle(map);
+//			map.getPlayerlocation()[0] =	map.getLastvisited()[0];
+//			map.getPlayerlocation()[1] =	map.getLastvisited()[1];
+				//map.getMap()[i][j].monsterinroom(c, map);
+			//map.getMap()[map.getPlayerlocation()[0]][map.getPlayerlocation()[1]].monsterinroom(c, map);
+				//map.getMap()[map.getPlayerlocation()[0]][map.getPlayerlocation()[1]].treasureinroom();
 		default:
 			break;
 		}
 	}
+
+}
 	
 	public void fightM() {
 		m.setFightAttack();
 		c.setFightflexibility();
-		if(m.getResistance() > 0) {
+		if(m.getResistance() > 0 && flee == true) {
 			System.out.println("\n-------->" + m.name + " attack rolls: " + m.getFightAttack());
 			System.out.println("-------->" + c.userName + " defence rolls: " + c.getFightflexibility());
 			
-			if (m.getFightAttack() > c.getFightflexibility()) {
+			if (m.getFightAttack() > c.getFightflexibility() && flee == true) {
 				System.out.println("\n---------------ITS A DIRECT HIT!---------------------");
 				if(c.getClass() == Knight.class) {
 					if (isBlock()) {
@@ -131,30 +140,43 @@ public class CombatSystem {
 				Game.EndMenu();
 				
 			}
+////			if (!flee) {
+//				System.out.println("u ecapppeeeeed");
+//			}
 			
 		}
 
 	}
 	
-	public boolean fleeBattle(Map map) {
+	public void fleeBattle(Map map) {
 		if (c.getClass() == Wizard.class) {
 			if(Math.random()*100 < c.getFightflexibility()*80) {
 				System.out.println("You succesfully escaped!");
-				map.getMap()[map.getLastvisited()[0]][map.getLastvisited()[1]].monsterinroom(c, map);
-				return true;
+//				map.getPlayerlocation()[0] =	map.getLastvisited()[0];
+//				map.getPlayerlocation()[1] =	map.getLastvisited()[1];
+//					//map.getMap()[i][j].monsterinroom(c, map);
+////					map.getMap()[map.getPlayerlocation()[0]][map.getPlayerlocation()[1]].monsterinroom(c, map);
+//					map.getMap()[map.getPlayerlocation()[0]][map.getPlayerlocation()[1]].treasureinroom();
+				map.playerlocation = map.lastvisited;
+				this.flee = false;
 			}
 			else {
 				System.out.println(m.name + " did not let you flee, the fight continues");
-				return false;
 			}
 		}
 		else if(Math.random()*100 < c.getFlexibility()*10) {
 			System.out.println("You succesfully escaped!");
-			return true;
+			map.playerlocation = map.lastvisited;
+//			map.getPlayerlocation()[0] =	map.getLastvisited()[0];
+//			map.getPlayerlocation()[1] =	map.getLastvisited()[1];
+//				//map.getMap()[i][j].monsterinroom(c, map);
+////				map.getMap()[map.getPlayerlocation()[0]][map.getPlayerlocation()[1]].monsterinroom(c, map);
+//				map.getMap()[map.getPlayerlocation()[0]][map.getPlayerlocation()[1]].treasureinroom();
+			this.flee = false;
+			//Game.gameLoop(map, input);
 		}
 		else {
 			System.out.println(m.name + " did not let you flee, the fight continues");
-			return false;
 		}
 	}
 
