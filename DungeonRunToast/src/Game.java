@@ -18,9 +18,11 @@ public class Game {
 	public static void main(String[] args) { 
 
 		Game game = new Game();
-
+		
+		
 		while (true) {
 			menulogo();
+			
 			System.out.println(
 					"     											                \n"	
 							+ "     											                \n"	
@@ -313,12 +315,12 @@ public class Game {
 				);
 
 		System.out.println(							
-				"							  	        ╔══════════════════════════════════╗\n"
-						+ "							  	║                                  ║\n"
-						+ "							  	║                                  ║\n"
-						+ "							  	║              [E]xit              ║\n"
-						+ "							  	║                                  ║\n"
-						+ "							  	╚══════════════════════════════════╝\n"
+				          "					 		  	╔══════════════════════════════════╗\n"
+						+ "					 		  	║                                  ║\n"
+						+ "					 		  	║                                  ║\n"
+						+ "					 		  	║              [E]xit              ║\n"
+						+ "					 		  	║                                  ║\n"
+						+ "					 		  	╚══════════════════════════════════╝\n"
 				);
 		Scanner input2 = new Scanner(System.in);
 
@@ -445,7 +447,7 @@ public class Game {
 			map.getMap()[map.getPlayerlocation()[0]][map.getPlayerlocation()[1]].treasureinroom();
 			if(map.getMap()[map.getPlayerlocation()[0]][map.getPlayerlocation()[1]].isDoor()) {
 				System.out.println("This Room has an exit\n do you want to exit y/n");
-				String ss = scanner.nextLine();
+				String ss =input.next().toLowerCase();
 				switch(ss) {
 				case "y":
 					game= false;
@@ -456,40 +458,7 @@ public class Game {
 			}
 			}
 			if(game) {
-				
-			
-			System.out.println("Where do you want to go? South, East, North, West, Map");
-			command =scanner.nextLine().toLowerCase();
-			
-			switch(command) {
-			 
-			
-			case "south":
-			map.goSouth();
-			break;
-			case "east":
-			map.goEast();
-			break;
-			case "west":
-			map.goWest();
-			break;
-			case "north":
-			map.goNorth();
-			break;
-			case "map":
-			map.drawMap();
-			break;
-			default:
-				System.out.println("I didnt quite get that");
-				command = "i";
-			}
 
-				map.getMap()[map.getPlayerlocation()[0]][map.getPlayerlocation()[1]].monsterinroom(c, map);
-				map.getMap()[map.getPlayerlocation()[0]][map.getPlayerlocation()[1]].getTreasure(c);		
-
-
-//				System.out.println("Where do you want to go? South, East, North, West, Map");
-//				command =scanner.nextLine().toLowerCase();
 
 				System.out.println("\n\nWhere do you want to go?[S]outh, [E]ast, [N]orth, [W]est, Map, Save, Score, Exit");
 				command =input.next().toLowerCase();
