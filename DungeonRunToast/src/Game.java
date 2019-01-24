@@ -12,7 +12,7 @@ import java.util.Scanner;
 public class Game {
 	int mapSize;
 
-	public Character c;
+	public static Character c;
 	static Scanner input = new Scanner(System.in);
 
 	public static void main(String[] args) { 
@@ -300,7 +300,7 @@ public class Game {
 
 
 
-	public void EndMenu() {
+	public static void EndMenu() {
 
 		System.out.println(
 				"     											     \n"			
@@ -315,7 +315,6 @@ public class Game {
 		System.out.println(							
 				"							  	╔══════════════════════════════════╗\n"
 						+ "							  	║                                  ║\n"
-						+ "							  	║              [M]enu              ║\n"
 						+ "							  	║                                  ║\n"
 						+ "							  	║              [E]xit              ║\n"
 						+ "							  	║                                  ║\n"
@@ -325,12 +324,7 @@ public class Game {
 
 		String endchoice =input2.next();
 
-		if (endchoice.equalsIgnoreCase("M")) { // START GAME
-			System.out.println("Returning to Menu...");
-	
-		} 
-
-		else if (endchoice.equalsIgnoreCase("E")) { // EXIT
+		if (endchoice.equalsIgnoreCase("E")) { // EXIT
 			System.out.println("Have a nice day!");
 			try {
 				Thread.sleep(50);
@@ -342,7 +336,11 @@ public class Game {
 			} catch (InterruptedException e) {}
 			System.out.println("\t\tBye....");
 			System.exit(0);
-		} else {
+	
+		} 
+
+		
+		 else {
 			System.out.println("Invalid choice, returning to Menu...\n");	
 			
 		}

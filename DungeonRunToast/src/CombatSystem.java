@@ -125,8 +125,8 @@ public class CombatSystem {
 				System.out.println("\n---------------Attack missed!---------------------");
 			}
 			if(c.getResistance() == 0) {
-				System.out.println(c.userName + " DIED A PAINFUL DEATH!------------>> GAME OVER!");
-				System.exit(0);
+				Game.EndMenu();
+				
 			}
 			
 		}
