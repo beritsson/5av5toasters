@@ -444,7 +444,7 @@ public class Game {
 				
 			
 			map.getMap()[map.getPlayerlocation()[0]][map.getPlayerlocation()[1]].monsterinroom(c, map);
-			map.getMap()[map.getPlayerlocation()[0]][map.getPlayerlocation()[1]].treasureinroom();
+			map.getMap()[map.getPlayerlocation()[0]][map.getPlayerlocation()[1]].getTreasure(c);
 			if(map.getMap()[map.getPlayerlocation()[0]][map.getPlayerlocation()[1]].isDoor()) {
 				System.out.println("This Room has an exit\n do you want to exit y/n");
 				String ss =input.next().toLowerCase();
