@@ -18,9 +18,11 @@ public class Game {
 	public static void main(String[] args) { 
 
 		Game game = new Game();
-
+		
+		
 		while (true) {
 			menulogo();
+			
 			System.out.println(
 					"     											                \n"	
 							+ "     											                \n"	
@@ -313,12 +315,12 @@ public class Game {
 				);
 
 		System.out.println(							
-				"							  	        ╔══════════════════════════════════╗\n"
-						+ "							  	║                                  ║\n"
-						+ "							  	║                                  ║\n"
-						+ "							  	║              [E]xit              ║\n"
-						+ "							  	║                                  ║\n"
-						+ "							  	╚══════════════════════════════════╝\n"
+				          "					 		  	╔══════════════════════════════════╗\n"
+						+ "					 		  	║                                  ║\n"
+						+ "					 		  	║                                  ║\n"
+						+ "					 		  	║              [E]xit              ║\n"
+						+ "					 		  	║                                  ║\n"
+						+ "					 		  	╚══════════════════════════════════╝\n"
 				);
 		Scanner input2 = new Scanner(System.in);
 
@@ -444,7 +446,7 @@ public class Game {
 			map.getMap()[map.getPlayerlocation()[0]][map.getPlayerlocation()[1]].treasureinroom();
 			if(map.getMap()[map.getPlayerlocation()[0]][map.getPlayerlocation()[1]].isDoor()) {
 				System.out.println("This Room has an exit\n do you want to exit y/n");
-				String ss = scanner.nextLine();
+				String ss =input.next().toLowerCase();
 				switch(ss) {
 				case "y":
 					game= false;
