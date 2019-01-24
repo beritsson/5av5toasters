@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class CombatSystem {
-	
+
 	Monster m;
 	Character c;
 	Scanner input;
@@ -26,18 +26,20 @@ public class CombatSystem {
 	public void startFight() {
 		c.setFightnumber();
 		m.setFightnumber();
-		System.out.println("\n-------->" + c.userName + " rolls: " + c.getFightnumber());
-		System.out.println("\n-------->" + m.name + " rolls: " + m.getFightnumber());
+
+		System.out.println("(" + c.userName + " rolls: " + c.getFightnumber() + ")");
+		System.out.println("(" + m.name + " rolls: " + m.getFightnumber() + ")");
+
 
 		if(c.getFightnumber() > m.getFightnumber()) {
-			System.out.println("\n" + c.userName + " makes the first move!");
+			System.out.println("\n-------------->>" + c.userName + " makes the first move!");
 			while (m.getResistance() > 0 && c.getResistance() > 0) {
 				fightC();
 				fightM();
 			}
 		}
 		else {
-			System.out.println("\n" + m.name + " makes the first move!");
+			System.out.println("\n-------------->>" + m.name + " makes the first move!");
 			while (m.getResistance() > 0 && c.getResistance() > 0) {
 				fightM();
 				fightC();
@@ -58,33 +60,32 @@ public class CombatSystem {
 		switch (combatChoice) {
 		case "A":
 			System.out.println("\n-------->" + c.userName + " attack rolls: " + c.getFightAttack());
-			System.out.println("\n-------->" + m.name + " defence rolls: " + m.getFightflexibility());
+			System.out.println("-------->" + m.name + " defence rolls: " + m.getFightflexibility());
 
 			if (c.getFightAttack() > m.getFightflexibility()) {
 				System.out.println("\n-------->Its a direct hit!");
 				if(c.getClass() == Thief.class) {
 					if (Math.random()*100 < 25) {
-						System.out.println("CRITICAL HIT! DOUBLE DAMAGE");
+						System.out.println("[---------------CRITICAL HIT! DOUBLE DAMAGE----------------]");
 						m.setResistance(m.getResistance()-2);
 						System.out.println("\n" + m.name + " current HP is " + m.getResistance());
 					}
 					else {
 						m.setResistance(m.getResistance()-1);
-						System.out.println(m.name + " current hp: " + m.getResistance());
+						System.out.println("(" + m.name + " current hp: " + m.getResistance() + ")");
 					}
 				}
 				else {
 					m.setResistance(m.getResistance()-1);
-					System.out.println(m.name + " current hp: " + m.getResistance());
+					System.out.println("(" + m.name + " current hp: " + m.getResistance() + ")");
 				}
 			}
 			else {
 				System.out.println("\n---------------Attack missed!---------------------");
 			}
 			if(m.getResistance() <= 0) {
-				System.out.println("\n" + m.name + " is dead! You won this fight!");
-				System.out.println("\n" + c.userName + " has " + c.getResistance() + "hp left!");
-				break;
+				System.out.println("\n[-------" + m.name + " is dead! You won this fight!------]");
+				System.out.println("(" + c.userName + " has " + c.getResistance() + "hp left!)");
 			}
 			break;
 		case "F":
@@ -99,24 +100,24 @@ public class CombatSystem {
 		m.setFightAttack();
 		c.setFightflexibility();
 		if(m.getResistance() > 0) {
-			System.out.println("\n------------------>" + m.name + " attack rolls: " + m.getFightAttack());
-			System.out.println("\n-------------------->" + c.userName + " defence rolls: " + c.getFightflexibility());
+			System.out.println("\n-------->" + m.name + " attack rolls: " + m.getFightAttack());
+			System.out.println("-------->" + c.userName + " defence rolls: " + c.getFightflexibility());
 			
 			if (m.getFightAttack() > c.getFightflexibility()) {
-				System.out.println("---------------->Its a direct hit!");
+				System.out.println("\n---------------ITS A DIRECT HIT!---------------------");
 				if(c.getClass() == Knight.class) {
 					if (isBlock()) {
 						c.setResistance(c.getResistance()-1);
-						System.out.println("\nCurrent hp on " + c.userName + " is " + c.getResistance());
+						System.out.println("(" + c.userName + " current hp is " + c.getResistance() + ")");
 					}
 					else if(!isBlock()) {
-						System.out.println("\n" + c.userName + " blocks the hit! No damage is taken");
+						System.out.println("\n" + c.userName + " BLOCKS THE DAMAGE! ZERO DAMAGE TAKEN!");
 						setBlock(true);
 					}
 				}
 				else {
 					c.setResistance(c.getResistance()-1);
-					System.out.println("\nCurrent hp on " + c.userName + " is " + c.getResistance());
+					System.out.println("(" + c.userName + " current hp is " + c.getResistance() + ")");
 				}
 
 			}
@@ -124,7 +125,7 @@ public class CombatSystem {
 				System.out.println("\n---------------Attack missed!---------------------");
 			}
 			if(c.getResistance() == 0) {
-				System.out.println(c.userName + " died a painfull death! GAME OVER!");
+				System.out.println(c.userName + " DIED A PAINFUL DEATH!------------>> GAME OVER!");
 				System.exit(0);
 			}
 			
@@ -152,4 +153,5 @@ public class CombatSystem {
 			return false;
 		}
 	}
+
 }

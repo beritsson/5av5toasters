@@ -444,7 +444,7 @@ public class Game {
 				map.getMap()[map.getPlayerlocation()[0]][map.getPlayerlocation()[1]].getTreasure(c);		
 
 				System.out.println("\n\nWhere do you want to go?[S]outh, [E]ast, [N]orth, [W]est, Map, Save, Score, Exit");
-				command =input.nextLine().toLowerCase();
+				command =input.next().toLowerCase();
 
 				switch(command) {
 

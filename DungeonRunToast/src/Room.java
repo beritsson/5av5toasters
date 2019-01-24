@@ -5,6 +5,7 @@ public class Room {
 	private int x;
 	private int y;
 	CombatSystem fight;
+	CombatSystem combat;
 	ArrayList<Monster> monsterList = new ArrayList<Monster>();
 	ArrayList<Treasure> treasureList = new ArrayList<Treasure>();
 	
@@ -56,23 +57,19 @@ public class Room {
 		tc.addTreasure(treasureList);	
 		return treasureList;
 	}
-	
 
 	public boolean monsterinroom(Character c) {
 		Monster temp = null;
 		if(monsterList.size()>0) {
 			System.out.println("\nMonster:");
 			for (Monster monster : monsterList) {
-				temp = monster;
 				monster.attributes();
-				while(monster.getResistance() > 0) {
-					fight = new CombatSystem(c, monster);
-					fight.startFight();
-				}
+				combat = new CombatSystem(c, monster);
+				combat.startFight();
+				temp = monster;
 			}
-			if (temp.getResistance() <= 0) {
-				this.monsterList.remove(temp);
-			}
+			
+			this.monsterList.remove(temp);
 			return true;
 		}		
 		else {
