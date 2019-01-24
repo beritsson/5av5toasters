@@ -89,7 +89,10 @@ public class CombatSystem {
 			}
 			break;
 		case "F":
-			fleeBattle(map);
+			if(fleeBattle(map)) {
+				
+			
+			map.getMap()[map.getLastvisited()[0]][map.getLastvisited()[1]].monsterinroom(c, map);}
 			break;
 		default:
 			break;

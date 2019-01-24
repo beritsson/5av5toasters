@@ -254,6 +254,10 @@ public class Map {
 	public int getSize() {
 		return Size;
 	}
+	public boolean clearMap() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 	
 
 //end
