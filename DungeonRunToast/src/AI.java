@@ -1,3 +1,4 @@
+
 import java.util.Collections;
 import java.util.Comparator;
 
@@ -10,8 +11,47 @@ public class AI {
 		this.map = map;
 		this.character = character;
 	}
-
+	
 	void go(){
+		map.setPlayerlocation(map.getNw());
+		map.drawMap();
+		fightloop(map.getMap()[map.getPlayerlocation()[0]][map.getPlayerlocation()[1]]);
+		
+		if (character.getResistance() > 0) {
+			map.visitedRooms[map.getPlayerlocation()[0]][map.getPlayerlocation()[1]] = true;
+			
+			while (!map.clearMap()) {
+//			for (int j2 = 0; j2 < 200; j2++) {
+
+					int number = (int)(Math.random()*4);
+					switch(number) {
+					case 0:
+						map.goSouth();
+						break;
+					case 1:
+						map.goEast();
+						break;
+					case 2:
+						map.goWest();
+						break;
+					case 3:
+						map.goNorth();
+						break;				
+					}
+					map.drawMap();
+					fightloop(map.getMap()[map.getPlayerlocation()[0]][map.getPlayerlocation()[1]]);
+					if(character.getResistance() <= 0) {break;}
+			}
+				
+		}
+		if((character.getResistance() > 0)) {
+			System.out.println("You clear this map, you win!");
+			System.out.println("Your final point is : "+ character.getTreasurePoint());
+		}
+	}
+	
+
+	void goo(){
 		
 		map.setPlayerlocation(map.getNw());
 		int i = map.playerlocation[0];

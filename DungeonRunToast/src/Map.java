@@ -52,7 +52,17 @@ public class Map {
 		this.visitedRooms = visitedRooms;
 	}
 	
-	
+	boolean clearMap(){
+		boolean clear = true;
+		for (int i = 0; i < Size; i++) {
+			for (int j = 0; j < Size; j++) {
+				if(visitedRooms[i][j] == false) {
+					clear = false;
+				}				
+			}
+		}
+		return clear;
+	}
 
 	public int[] getLastvisited() {
 		return lastvisited;
@@ -129,7 +139,7 @@ public class Map {
 	
 
 	public void goEast() {
-		
+
 		int i = this.playerlocation[0];
 		int j = this.playerlocation[1];
 		if(Size>this.playerlocation[1]+1 && this.playerlocation[1]+1 >= 0 && visitedRooms[i][j+1] ==false  ) {
