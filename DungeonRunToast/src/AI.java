@@ -5,6 +5,11 @@ import java.util.Comparator;
 public class AI {
 	Map map;
 	Character character;
+	int GiantSpider = 0;
+	int Skeleton = 0;
+	int Orc = 0;
+	int Troll = 0;
+	
 	
 
 	public AI(Map map, Character character) {
@@ -49,56 +54,17 @@ public class AI {
 				
 		}
 		if((character.getResistance() > 0)) {
-			System.out.println("You clear this map, you win!");
-			System.out.println("Your final point is : "+ character.getTreasurePoint());
+			System.out.println("\n\nYou clear this map, you win!");
 		}
+		System.out.println("\nVisited room :  ");
+		map.drawMap();
+		System.out.println("Killed GiantSpider : "+ GiantSpider);
+		System.out.println("Killed Skeleton : "+ Skeleton);
+		System.out.println("Killed Orc : " + Orc);
+		System.out.println("Killed Troll : "+ Troll);
+		System.out.println("Your treasurePoint is : "+ character.getTreasurePoint());
 	}
 	
-
-//	void goo(){
-//		
-//		map.setPlayerlocation(map.getNw());
-//		int i = map.playerlocation[0];
-//		int j = map.playerlocation[1];
-//		map.drawMap();
-//		fightloop(map.getMap()[i][j]);
-//		
-//		if (character.getResistance() > 0) {
-//			map.visitedRooms[i][j] = true;
-//	        int x = map.getSize();	        
-//
-//	        gameOver:for (i = 0; i < x; i++) {
-//				if (i%2 == 0) {
-//					for (j = 0; j < x-1; j++) {
-//						map.goEast();
-//						map.drawMap();
-//						fightloop(map.getMap()[i][j]);
-//						if(character.getResistance() <= 0) {break gameOver;}						
-//					}
-//				}else {
-//					for (j = 0; j < x-1; j++) {
-//						map.goWest();
-//						map.drawMap();
-//						fightloop(map.getMap()[i][j]);
-//						if(character.getResistance() <= 0) {break gameOver;}
-//					}
-//				}
-//				if (i != x-1) {
-//					map.goSouth();
-//					map.drawMap();
-//					fightloop(map.getMap()[i][j]);
-//					if(character.getResistance() <= 0) {break gameOver;}
-//				}
-//				
-//			}
-//		}
-//		if((character.getResistance() > 0)) {
-//			System.out.println("You clear this map, you win!");
-//			System.out.println("Your final point is : "+ character.getTreasurePoint());
-//		}
-//		
-//	}
-
 
 	void fightSequence(Room room){	
 		character.setFightnumber();		
@@ -163,9 +129,10 @@ public class AI {
 				}
 			}
 			
-			if (character.getResistance() > 0) {
-				room.monsterList.remove(i);
+			if (character.getResistance() > 0) {				
 				System.out.println(monster.getName()+" is dead. "+"you win! ");
+				deadMonster(monster);
+				room.monsterList.remove(i);
 			}else {
 				System.out.println("you are dead, game over!");
 				break over;
@@ -238,6 +205,23 @@ public class AI {
 			System.out.println("Wizard flee sucessfully!");
 		}else {
 			System.out.println("Fails to flee!");
+		}
+	}
+	
+	void deadMonster(Monster monster){
+		switch(monster.getName()) {
+		case "GiantSpider":
+			GiantSpider+=1;
+			break;
+		case "Skeleton":
+			Skeleton+=1;
+			break;
+		case "Orc":
+			Orc+=1;
+			break;
+		case "Troll":
+			Troll+=1;
+			break;				
 		}
 	}
 	
