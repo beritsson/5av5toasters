@@ -68,24 +68,26 @@ public class Room {
 		return treasureList;
 	}
 
-	public boolean monsterinroom(Character c, Map map) {
-		Monster temp = null;
-		if(monsterList.size()>0) {
-			System.out.println("\nMonster:");
-			for (Monster monster : monsterList) {
-				monster.attributes();
-				combat = new CombatSystem(c, monster, map);
-				combat.startFight(map);
-				temp = monster;
-			}
-		
-			
-			this.monsterList.remove(temp);
-			return true;
-		}		
-		else {
-		System.out.println("\nNo monsters in this room");}
-		return false;}
+
+
+public boolean monsterinroom(Character c, Map map) {
+        Monster temp = null;
+        if(monsterList.size()>0) {
+            System.out.println("\nMonster:");
+            for (Monster monster : monsterList) {
+                monster.attributes();
+                combat = new CombatSystem(c, monster, map);
+                combat.startFight(map);
+                temp = monster;
+            }
+            if(temp.getResistance() <= 0) {
+                this.monsterList.remove(temp);
+            }
+            return true;
+        }        
+        else {
+        System.out.println("\nNo monsters in this room");}
+        return false;}
 	
 	
 	public boolean treasureinroom() {
