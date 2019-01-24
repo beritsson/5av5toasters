@@ -79,6 +79,7 @@ public class Room {
 				temp = monster;
 			}
 			
+			
 			this.monsterList.remove(temp);
 			return true;
 		}		

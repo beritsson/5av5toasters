@@ -91,6 +91,7 @@ public class CombatSystem {
 				System.out.println("(" + c.userName + " has " + c.getResistance() + "hp left!)");
 				this.flee = false;
 				break;
+				
 			
 			}
 			break;
@@ -101,6 +102,7 @@ public class CombatSystem {
 				//map.getMap()[i][j].monsterinroom(c, map);
 			//map.getMap()[map.getPlayerlocation()[0]][map.getPlayerlocation()[1]].monsterinroom(c, map);
 				//map.getMap()[map.getPlayerlocation()[0]][map.getPlayerlocation()[1]].treasureinroom();
+		    break;
 		default:
 			break;
 		}
