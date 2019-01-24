@@ -236,7 +236,7 @@ public class Game {
 	public void AIgamemenu() {
 		chooseCharacter("AI");	
 		Map map = new Map(mapmenu());
-		AI ai = new AI(map);
+		AI ai = new AI(map,c);
 		ai.go();
 	}
 
@@ -412,7 +412,7 @@ public class Game {
 								+ "							  	║  Start position left bottom corner ║\n"
 								+ "							  	╚════════════════════════════════════╝\n\n\n"
 									);
-				map.setPlayerlocation(map.getSe());
+				map.setPlayerlocation(map.getSw());
 				int iii = map.playerlocation[0];
 				int jjj = map.playerlocation[1];
 				map.visitedRooms[iii][jjj] = true;
@@ -425,7 +425,7 @@ public class Game {
 								+ "							  	║ Start position right bottom corner ║\n"
 								+ "							  	╚════════════════════════════════════╝\n\n\n"
 									);
-				map.setPlayerlocation(map.getSw());
+				map.setPlayerlocation(map.getSe());
 				menuing = false;
 				int iiii = map.playerlocation[0];
 				int jjjj = map.playerlocation[1];
