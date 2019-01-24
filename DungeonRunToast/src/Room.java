@@ -74,10 +74,11 @@ public class Room {
 			System.out.println("\nMonster:");
 			for (Monster monster : monsterList) {
 				monster.attributes();
-				combat = new CombatSystem(c, monster);
+				combat = new CombatSystem(c, monster, map);
 				combat.startFight(map);
 				temp = monster;
 			}
+		
 			
 			this.monsterList.remove(temp);
 			return true;

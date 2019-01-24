@@ -390,6 +390,8 @@ public class Game {
 				int i = map.playerlocation[0];
 				int j = map.playerlocation[1];
 				map.visitedRooms[i][j] = true;
+				map.lastvisited[0]=map.playerlocation[0];
+				map.lastvisited[1]=map.playerlocation[1];
 				menuing = false;
 				break;
 			case "r":
@@ -403,6 +405,8 @@ public class Game {
 				int ii = map.playerlocation[0];
 				int jj = map.playerlocation[1];
 				map.visitedRooms[ii][jj] = true;
+				map.lastvisited[0]=map.playerlocation[0];
+				map.lastvisited[1]=map.playerlocation[1];
 				menuing = false;
 				break;
 			case "lb":
@@ -416,6 +420,8 @@ public class Game {
 				int iii = map.playerlocation[0];
 				int jjj = map.playerlocation[1];
 				map.visitedRooms[iii][jjj] = true;
+				map.lastvisited[0]=map.playerlocation[0];
+				map.lastvisited[1]=map.playerlocation[1];
 				menuing = false;
 				break;
 			case "rb":
@@ -430,20 +436,24 @@ public class Game {
 				int iiii = map.playerlocation[0];
 				int jjjj = map.playerlocation[1];
 				map.visitedRooms[iiii][jjjj] = true;
+				map.lastvisited[0]=map.playerlocation[0];
+				map.lastvisited[1]=map.playerlocation[1];
+				menuing = false;
 				break;
 			}
 			continue;
 		}
 	}
 
-	public void gameLoop(Map map, Scanner scanner) {
+	public static void gameLoop(Map map, Scanner scanner) {
 		String command = "";
 		boolean game = true;
 		while(game) {
 			if(!command.equals("map") || !command.equals("i")) {
 				
+			
 			map.getMap()[map.getPlayerlocation()[0]][map.getPlayerlocation()[1]].monsterinroom(c, map);
-			map.getMap()[map.getPlayerlocation()[0]][map.getPlayerlocation()[1]].treasureinroom();
+			map.getMap()[map.getPlayerlocation()[0]][map.getPlayerlocation()[1]].getTreasure(c);
 			if(map.getMap()[map.getPlayerlocation()[0]][map.getPlayerlocation()[1]].isDoor()) {
 				System.out.println("This Room has an exit\n do you want to exit y/n");
 				String ss =input.next().toLowerCase();
@@ -458,8 +468,7 @@ public class Game {
 			}
 			if(game) {
 
-
-				System.out.println("\n\nWhere do you want to go?[S]outh, [E]ast, [N]orth, [W]est, Map, Save, Score, Exit");
+				System.out.println("\n\nWhere do you want to go?[S]outh, [E]ast, [N]orth, [W]est, Map, Save, Score");
 				command =input.next().toLowerCase();
 
 				switch(command) {
@@ -492,8 +501,9 @@ public class Game {
 				case "score":
 					System.out.println("You have a score of " + c.getTreasurePoint() );
 					break;
-				case "exit":
-					return;
+				
+	//			case "exit":
+	//				return;
 				
 				default:
 					System.out.println("I didnt quite get that");
