@@ -21,7 +21,6 @@ public class AI {
 			map.visitedRooms[map.getPlayerlocation()[0]][map.getPlayerlocation()[1]] = true;
 			
 			while (!map.clearMap()) {
-//			for (int j2 = 0; j2 < 200; j2++) {
 
 					int number = (int)(Math.random()*4);
 					switch(number) {
@@ -39,7 +38,12 @@ public class AI {
 						break;				
 					}
 					map.drawMap();
-					fightloop(map.getMap()[map.getPlayerlocation()[0]][map.getPlayerlocation()[1]]);
+					if(map.getMap()[map.getPlayerlocation()[0]][map.getPlayerlocation()[1]].monsterList.size()>0
+							&& character.getResistance() == 1) {
+						flee();
+					}else {
+						fightloop(map.getMap()[map.getPlayerlocation()[0]][map.getPlayerlocation()[1]]);
+					}
 					if(character.getResistance() <= 0) {break;}
 			}
 				
@@ -51,49 +55,49 @@ public class AI {
 	}
 	
 
-	void goo(){
-		
-		map.setPlayerlocation(map.getNw());
-		int i = map.playerlocation[0];
-		int j = map.playerlocation[1];
-		map.drawMap();
-		fightloop(map.getMap()[i][j]);
-		
-		if (character.getResistance() > 0) {
-			map.visitedRooms[i][j] = true;
-	        int x = map.getSize();	        
-
-	        gameOver:for (i = 0; i < x; i++) {
-				if (i%2 == 0) {
-					for (j = 0; j < x-1; j++) {
-						map.goEast();
-						map.drawMap();
-						fightloop(map.getMap()[i][j]);
-						if(character.getResistance() <= 0) {break gameOver;}						
-					}
-				}else {
-					for (j = 0; j < x-1; j++) {
-						map.goWest();
-						map.drawMap();
-						fightloop(map.getMap()[i][j]);
-						if(character.getResistance() <= 0) {break gameOver;}
-					}
-				}
-				if (i != x-1) {
-					map.goSouth();
-					map.drawMap();
-					fightloop(map.getMap()[i][j]);
-					if(character.getResistance() <= 0) {break gameOver;}
-				}
-				
-			}
-		}
-		if((character.getResistance() > 0)) {
-			System.out.println("You clear this map, you win!");
-			System.out.println("Your final point is : "+ character.getTreasurePoint());
-		}
-		
-	}
+//	void goo(){
+//		
+//		map.setPlayerlocation(map.getNw());
+//		int i = map.playerlocation[0];
+//		int j = map.playerlocation[1];
+//		map.drawMap();
+//		fightloop(map.getMap()[i][j]);
+//		
+//		if (character.getResistance() > 0) {
+//			map.visitedRooms[i][j] = true;
+//	        int x = map.getSize();	        
+//
+//	        gameOver:for (i = 0; i < x; i++) {
+//				if (i%2 == 0) {
+//					for (j = 0; j < x-1; j++) {
+//						map.goEast();
+//						map.drawMap();
+//						fightloop(map.getMap()[i][j]);
+//						if(character.getResistance() <= 0) {break gameOver;}						
+//					}
+//				}else {
+//					for (j = 0; j < x-1; j++) {
+//						map.goWest();
+//						map.drawMap();
+//						fightloop(map.getMap()[i][j]);
+//						if(character.getResistance() <= 0) {break gameOver;}
+//					}
+//				}
+//				if (i != x-1) {
+//					map.goSouth();
+//					map.drawMap();
+//					fightloop(map.getMap()[i][j]);
+//					if(character.getResistance() <= 0) {break gameOver;}
+//				}
+//				
+//			}
+//		}
+//		if((character.getResistance() > 0)) {
+//			System.out.println("You clear this map, you win!");
+//			System.out.println("Your final point is : "+ character.getTreasurePoint());
+//		}
+//		
+//	}
 
 
 	void fightSequence(Room room){	
@@ -207,6 +211,17 @@ public class AI {
 			System.out.println(monster.getName()+" have "+monster.getResistance()+" blood left");
 		}else {
 			System.out.println("Missed attack");
+		}
+	}
+	
+	void flee(){
+		if((int)(Math.random()*100) < character.getFlexibility()*10){
+			System.out.println("You succesfully escaped!");
+		}else if(character.getCharacterName() == "Wizard" && (int)(Math.random()*100) < 80) {
+			System.out.println("Wizard succesfully escaped!");
+		}else {
+			System.out.println("you kan not escape, the fight continues!");
+			fightloop(map.getMap()[map.getPlayerlocation()[0]][map.getPlayerlocation()[1]]);
 		}
 	}
 	
