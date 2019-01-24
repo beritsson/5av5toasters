@@ -35,14 +35,14 @@ public class CombatSystem {
 
 		if(c.getFightnumber() > m.getFightnumber() && flee == true) {
 			System.out.println("\n-------------->>" + c.userName + " makes the first move!");
-			while (m.getResistance() > 0 && c.getResistance() > 0) {
+			while (m.getResistance() > 0 && c.getResistance() > 0 && flee == true) {
 				fightC(map);
 				fightM();
 			}
 		}
 		else {
 			System.out.println("\n-------------->>" + m.name + " makes the first move!");
-			while (m.getResistance() > 0 && c.getResistance() > 0) {
+			while (m.getResistance() > 0 && c.getResistance() > 0 && flee == true) {
 				fightM();
 				fightC(map);
 			}
