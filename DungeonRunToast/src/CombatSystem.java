@@ -97,11 +97,6 @@ public class CombatSystem {
 			break;
 		case "F":
 		    fleeBattle(map);
-//			map.getPlayerlocation()[0] =	map.getLastvisited()[0];
-//			map.getPlayerlocation()[1] =	map.getLastvisited()[1];
-				//map.getMap()[i][j].monsterinroom(c, map);
-			//map.getMap()[map.getPlayerlocation()[0]][map.getPlayerlocation()[1]].monsterinroom(c, map);
-				//map.getMap()[map.getPlayerlocation()[0]][map.getPlayerlocation()[1]].treasureinroom();
 		    break;
 		default:
 			break;
@@ -156,10 +151,10 @@ public class CombatSystem {
 				System.out.println("You succesfully escaped!");
 //				map.getPlayerlocation()[0] =	map.getLastvisited()[0];
 //				map.getPlayerlocation()[1] =	map.getLastvisited()[1];
-//					//map.getMap()[i][j].monsterinroom(c, map);
-////					map.getMap()[map.getPlayerlocation()[0]][map.getPlayerlocation()[1]].monsterinroom(c, map);
+////					//map.getMap()[i][j].monsterinroom(c, map);
+					map.getMap()[map.getPlayerlocation()[0]][map.getPlayerlocation()[1]].monsterinroom(c, map);
 //					map.getMap()[map.getPlayerlocation()[0]][map.getPlayerlocation()[1]].treasureinroom();
-				map.playerlocation = map.lastvisited;
+				//map.playerlocation = map.lastvisited;
 				this.flee = false;
 			}
 			else {
@@ -168,7 +163,8 @@ public class CombatSystem {
 		}
 		else if(Math.random()*100 < c.getFlexibility()*10) {
 			System.out.println("You succesfully escaped!");
-			map.playerlocation = map.lastvisited;
+			map.setPlayerlocation(map.getLastvisited());
+//			map.playerlocation = map.lastvisited;
 //			map.getPlayerlocation()[0] =	map.getLastvisited()[0];
 //			map.getPlayerlocation()[1] =	map.getLastvisited()[1];
 //				//map.getMap()[i][j].monsterinroom(c, map);

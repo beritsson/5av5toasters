@@ -212,7 +212,7 @@ public class Map {
 		int i = this.playerlocation[0];
 		int j = this.playerlocation[1];
 		if(Size>this.playerlocation[0]+1 &&this.playerlocation[0]+1 >= 0 && visitedRooms[i+1][j] ==false) {
-			lastvisited=this.playerlocation;
+			this.lastvisited=this.playerlocation;
 			playerlocation[0]+=1;
 			System.out.println("You are now at room: [" + this.playerlocation[0]+ "," + this.playerlocation[1] + "]");
 			int ii = this.playerlocation[0];
@@ -225,6 +225,7 @@ public class Map {
 			System.out.println("You have allready visited this room");
 			
 		}
+		
 		else {
 			System.out.println("No path in that direction");
 		}
