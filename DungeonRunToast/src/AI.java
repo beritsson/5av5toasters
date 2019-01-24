@@ -81,26 +81,41 @@ public class AI {
 		over:for (int i = room.monsterList.size()-1; i >= 0 ; i--) {
 			Monster monster = room.monsterList.get(i);			
 			monster.attributes();
+			boolean noAttack = true;  //knight skill
 			System.out.println("your initiativ point :"+character.getFightnumber());
 			System.out.println(monster.getName()+"'s initiativ point :"+monster.getFightnumber());			
 			System.out.println("Fight begin!");
 			if (character.getFightnumber() >= monster.getFightnumber()) {
 				while(character.getResistance()>0) {
 					activeAttack(monster);
+					
 					if(monster.getResistance()>0) {
-						beAttacked(monster);
+						if(character.getCharacterName() == "Knight" && noAttack){  //knight skill
+							System.out.println("Knight missed first attack!");
+							noAttack = false;
+						}else {
+							beAttacked(monster);
+						}						
 					}else {
 						break;
 					}
 				}
 			}else {
 				while(monster.getResistance()>0) {
-					beAttacked(monster);
+					
+					if(character.getCharacterName() == "Knight" && noAttack){  //knight skill
+						System.out.println("Knight missed first attack!");
+						noAttack = false;
+					}else {
+						beAttacked(monster);
+					}
+					
 					if(character.getResistance()>0) {
 						activeAttack(monster);
 					}else {
 						break;
-					}										
+					}	
+					
 				}
 			}
 			
@@ -128,6 +143,9 @@ public class AI {
 			if(character.getFightAttack() > monster.getFightflexibility()) {
 				monster.setResistance(monster.getResistance()-1);
 				System.out.println(monster.getName()+" lost 1 blood");
+				if(character.getCharacterName() == "Thief"){
+					thiefAbility(monster);
+				}
 				System.out.println("You have "+character.getResistance()+" blood left");
 				System.out.println(monster.getName()+" have "+monster.getResistance()+" blood left");
 			}else {
@@ -152,6 +170,20 @@ public class AI {
 		}
 	}
 	
+	void thiefAbility(Monster monster){
+		if((int)(Math.random()*100) < 25){
+			monster.setResistance(monster.getResistance()-1);
+			System.out.println("Thief's double injury!");
+			System.out.println(monster.getName()+" lost 1 blood again");
+		}
+	}
 	
-
+	void wizardAbility(){
+		if((int)(Math.random()*100) < 80){
+			System.out.println("Wizard flee sucessfully!");
+		}else {
+			System.out.println("Fails to flee!");
+		}
+	}
+	
 }
