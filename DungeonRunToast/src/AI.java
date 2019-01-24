@@ -20,13 +20,15 @@ public class AI {
 	void go(){
 		map.setPlayerlocation(map.getNw());
 		map.drawMap();
+		map.visitedRooms[map.getPlayerlocation()[0]][map.getPlayerlocation()[1]] = true;
 		fightloop(map.getMap()[map.getPlayerlocation()[0]][map.getPlayerlocation()[1]]);
 		
 		if (character.getResistance() > 0) {
-			map.visitedRooms[map.getPlayerlocation()[0]][map.getPlayerlocation()[1]] = true;
+			
 			
 			while (!map.clearMap()) {
-
+					System.out.println(" ");
+					System.out.println(" ");
 					int number = (int)(Math.random()*4);
 					switch(number) {
 					case 0:
@@ -43,8 +45,9 @@ public class AI {
 						break;				
 					}
 					map.drawMap();
-					if(map.getMap()[map.getPlayerlocation()[0]][map.getPlayerlocation()[1]].monsterList.size()>0
+					if(findBigMonster(map.getMap()[map.getPlayerlocation()[0]][map.getPlayerlocation()[1]])
 							&& character.getResistance() == 1) {
+						System.out.println("Try to escape...");
 						flee();
 					}else {
 						fightloop(map.getMap()[map.getPlayerlocation()[0]][map.getPlayerlocation()[1]]);
@@ -58,7 +61,7 @@ public class AI {
 		}
 		System.out.println("\nVisited room :  ");
 		map.drawMap();
-		System.out.println("Killed GiantSpider : "+ GiantSpider);
+		System.out.println("\nKilled GiantSpider : "+ GiantSpider);
 		System.out.println("Killed Skeleton : "+ Skeleton);
 		System.out.println("Killed Orc : " + Orc);
 		System.out.println("Killed Troll : "+ Troll);
@@ -87,61 +90,65 @@ public class AI {
 	
 	
 	void fightloop(Room room){
-		fightSequence(room);
-		over:for (int i = room.monsterList.size()-1; i >= 0 ; i--) {
-			Monster monster = room.monsterList.get(i);			
-			monster.attributes();
-			boolean noAttack = true;  //knight skill
-			System.out.println("your initiativ point :"+character.getFightnumber());
-			System.out.println(monster.getName()+"'s initiativ point :"+monster.getFightnumber());			
-			System.out.println("Fight begin!");
-			if (character.getFightnumber() >= monster.getFightnumber()) {
-				while(character.getResistance()>0) {
-					activeAttack(monster);
-					
-					if(monster.getResistance()>0) {
+		if (room.monsterList.size() == 0) {
+			System.out.println("No monster i this room");
+		}else {
+			fightSequence(room);
+			over:for (int i = room.monsterList.size()-1; i >= 0 ; i--) {
+				Monster monster = room.monsterList.get(i);			
+				monster.attributes();
+				boolean noAttack = true;  //knight skill
+				System.out.println("your initiativ point :"+character.getFightnumber());
+				System.out.println(monster.getName()+"'s initiativ point :"+monster.getFightnumber());			
+				System.out.println("Fight begin!");
+				if (character.getFightnumber() >= monster.getFightnumber()) {
+					while(character.getResistance()>0) {
+						activeAttack(monster);
+						
+						if(monster.getResistance()>0) {
+							if(character.getCharacterName() == "Knight" && noAttack){  //knight skill
+								System.out.println("Knight missed first attack!");
+								noAttack = false;
+							}else {
+								beAttacked(monster);
+							}						
+						}else {
+							break;
+						}
+					}
+				}else {
+					while(monster.getResistance()>0) {
+						
 						if(character.getCharacterName() == "Knight" && noAttack){  //knight skill
 							System.out.println("Knight missed first attack!");
 							noAttack = false;
 						}else {
 							beAttacked(monster);
-						}						
-					}else {
-						break;
+						}
+						
+						if(character.getResistance()>0) {
+							activeAttack(monster);
+						}else {
+							break;
+						}	
+						
 					}
 				}
-			}else {
-				while(monster.getResistance()>0) {
-					
-					if(character.getCharacterName() == "Knight" && noAttack){  //knight skill
-						System.out.println("Knight missed first attack!");
-						noAttack = false;
-					}else {
-						beAttacked(monster);
-					}
-					
-					if(character.getResistance()>0) {
-						activeAttack(monster);
-					}else {
-						break;
-					}	
-					
+				
+				if (character.getResistance() > 0) {				
+					System.out.println(monster.getName()+" is dead. "+"you win! ");
+					deadMonster(monster);
+					room.monsterList.remove(i);
+				}else {
+					System.out.println("you are dead, game over!");
+					break over;
 				}
 			}
-			
-			if (character.getResistance() > 0) {				
-				System.out.println(monster.getName()+" is dead. "+"you win! ");
-				deadMonster(monster);
-				room.monsterList.remove(i);
-			}else {
-				System.out.println("you are dead, game over!");
-				break over;
-			}
-		}
-		if((character.getResistance() > 0)) {
-			System.out.println("Monster clear!");
-			room.getTreasure(character);
-		}
+			if((character.getResistance() > 0)) {
+				System.out.println("Monster clear!");
+				room.getTreasure(character);
+			}					
+		}		
 	}
 	
 	void activeAttack(Monster monster){		
@@ -206,6 +213,16 @@ public class AI {
 		}else {
 			System.out.println("Fails to flee!");
 		}
+	}
+	
+	boolean findBigMonster(Room room){
+		boolean find = false;
+		for (Monster m : room.monsterList) {
+			if(m.getName() == "Orc" || m.getName() == "Troll") {
+				find = true;
+			}
+		}
+		return find;
 	}
 	
 	void deadMonster(Monster monster){
