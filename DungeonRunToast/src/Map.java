@@ -255,8 +255,15 @@ public class Map {
 		return Size;
 	}
 	public boolean clearMap() {
-		// TODO Auto-generated method stub
-		return false;
+		boolean clear = true;
+		for (int i = 0; i < Size; i++) {
+			for (int j = 0; j < Size; j++) {
+				if(visitedRooms[i][j] == false) {
+					clear = false;
+				}				
+			}
+		}
+		return clear;
 	}
 	
 
