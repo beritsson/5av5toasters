@@ -110,7 +110,7 @@ public boolean monsterinroom(Character c, Map map) {
 			point += treasure.getValue();
 		}
 		character.setTreasurePoint(character.getTreasurePoint()+point);
-		System.out.println("You get "+character.getTreasurePoint()+" points");
+		System.out.println("You got "+character.getTreasurePoint()+" points");
 		treasureList.clear();
 	}
 
